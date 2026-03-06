@@ -2,4 +2,4 @@
   apt:
     name:
       - openshot-qt
-    deb: ansible_pull_config/tasks/files/packages/deb/anki_2.1.15.deb
+    deb: https://archive.ubuntu.com/ubuntu/pool/universe/a/anki/anki_2.1.15+dfsg-3ubuntu4_all.deb
