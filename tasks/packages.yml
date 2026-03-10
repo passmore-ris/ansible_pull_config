@@ -2,6 +2,7 @@
   apt:
     name:
       - openshot-qt
+      - htop
 
 - name: Install .deb files
   apt:
