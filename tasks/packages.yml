@@ -4,7 +4,6 @@
       - openshot-qt
       - htop
       - snapd
-      - scratch3
       - inkscape
       - geany
       - thonny # Workbench.py must be changed. See 'thonny.yml'
