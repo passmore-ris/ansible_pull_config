@@ -1,5 +1,12 @@
-- name: Enable installation of snap on Linux Mint
-  rename:
+- name: Make backup of file preventing installation of snapd
+  copy:
     src: /etc/apt/preferences.d/nosnap.pref
     dest: /etc/apt/preferences.d/nosnap.backup
   when: ansible_facts['distribution'] == 'Linux Mint'
+
+- name: Remove file preventing installation of snapd
+  file:
+    path: /etc/apt/preferences.d/nosnap.pref
+    state: absent
+  when: ansible_facts['distribution'] == 'Linux Mint'
+
