@@ -1,0 +1,5 @@
+- name: Enable installation of snap on Linux Mint
+  rename:
+    src: /etc/apt/preferences.d/nosnap.pref
+    dest: /etc/apt/preferences.d/nosnap.backup
+  when: ansible_facts['distribution'] == 'Linux Mint'
