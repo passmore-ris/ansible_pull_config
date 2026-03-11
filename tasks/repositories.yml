@@ -9,3 +9,8 @@
   when: ansible_facts['distribution'] == 'Linux Mint' and ansible_distribution_release == 'zena'
 
 # Debian repositories
+
+# Update cache
+- name: Update cache
+  package:
+    update_cache: yes
