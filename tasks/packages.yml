@@ -25,3 +25,4 @@
 - name: Install .deb files
   apt:
     deb: https://archive.ubuntu.com/ubuntu/pool/universe/a/anki/anki_2.1.15+dfsg-3ubuntu4_all.deb
+  ignore_errors: yes
