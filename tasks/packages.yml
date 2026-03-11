@@ -3,7 +3,7 @@
     name:
       - openshot-qt
       - htop
-      - snapd # Used for installing Turbowarp
+      - snap
       - scratch3
       - inkscape
       - geany
