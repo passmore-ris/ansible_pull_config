@@ -1,5 +1,6 @@
 - name: Make backup of file preventing installation of snapd
   copy:
+    remote_src: true
     src: /etc/apt/preferences.d/nosnap.pref
     dest: /etc/apt/preferences.d/nosnap.backup
   when: ansible_facts['distribution'] == 'Linux Mint'
