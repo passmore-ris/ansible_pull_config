@@ -1,0 +1,11 @@
+# Linux Mint repositories
+- name: Set Linux Mint repositories to Yandex mirrors
+  copy:
+    src: files/apt_repositories/linux_mint
+    dest: /etc/apt/sources.list.d/official-package-repositories.list
+    owner: root
+    group: root
+    mode: 0440
+  when: ansible_facts['distribution'] == 'Linux Mint' and ansible_distribution_release == 'zena'
+
+# Debian repositories

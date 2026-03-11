@@ -9,6 +9,11 @@
       changed_when: False
 
   tasks:
+    # Change repositories to Yandex mirrors
+    - include_tasks: tasks/repositories.yml
+    # Install packages
     - include_tasks: tasks/packages.yml
+    # Make users, including ansible user for automatic pulling
     - include_tasks: tasks/users.yml
+    # Set cron jobs
     - include_tasks: tasks/cron.yml
