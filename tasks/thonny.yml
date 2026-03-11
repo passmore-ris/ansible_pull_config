@@ -1,0 +1,14 @@
+- name: Remove flag from Thonny
+  copy:
+    src: files/thonny_workbench.py
+    dest: /usr/lib/python3/dist-packages/thonny/workbench.py
+    owner: root
+    group: root
+    mode: 0440
+
+- name: Make workbench immutable
+  file:
+    path: /usr/lib/python3/dist-packages/thonny/workbench.py
+    attributes: +i
+  register: copy_result
+  changed_when: "'i' not in copy_result.diff.before.attributes"

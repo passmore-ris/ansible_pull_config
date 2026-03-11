@@ -13,6 +13,7 @@
     - include_tasks: tasks/repositories.yml
     # Install packages
     - include_tasks: tasks/packages.yml
+    - include_tasks: tasks/thonny.yml # Thonny needs to be...edited a little bit.
     # Make users, including ansible user for automatic pulling
     - include_tasks: tasks/users.yml
     # Set cron jobs
