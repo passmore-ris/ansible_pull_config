@@ -10,7 +10,7 @@
 
   tasks:
     # Change repositories to Yandex mirrors
-    - include_tasks: tasks/repositories.yml
+    #- include_tasks: tasks/repositories.yml
     # Install packages
     - include_tasks: tasks/snapd.yml # Enables installation of snap on Linux Mint
     - include_tasks: tasks/packages.yml
