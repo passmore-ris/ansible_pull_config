@@ -1,6 +1,9 @@
 - hosts: localhost
   connection: local
   become: true
+  vars:
+    domain: ad.rischool.ru
+    dc_ip: 192.168.88.252  # IP address of domain controller
 
   pre_tasks:
     - name: update repositories
@@ -21,3 +24,4 @@
     - include_tasks: tasks/users.yml
     # Set cron jobs
     - include_tasks: tasks/cron.yml
+    - include_tasks: tasks/domain_join.yml
