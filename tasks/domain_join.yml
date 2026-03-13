@@ -53,7 +53,7 @@
 
 # Enable automatic creation of  home directories for each user.
 # This is automatically enabled in the RedHat family.
--name: Enable automatic creation of home directories
+- name: Enable automatic creation of home directories
   import_playbook: mkhomedir.yml
   when: ansible_os_family == "Debian"
 
