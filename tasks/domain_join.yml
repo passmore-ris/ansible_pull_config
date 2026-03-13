@@ -37,11 +37,11 @@
       - packagekit
   when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
 
-#-import_paybook: 
+#-import_playbook: Here I'll import the playbook for altering pam
 
-- name: install expect using pip
-  pip:
-    name: pexpect
+#- name: install expect using pip
+#  pip:
+#    name: pexpect
 
 - name: Join host to domain
   expect:
