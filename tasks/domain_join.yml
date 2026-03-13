@@ -53,7 +53,8 @@
 
 # Enable automatic creation of  home directories for each user.
 # This is automatically enabled in the RedHat family.
-- import_playbook: mkhomedir.yml
+-name: Enable automatic creation of home directories
+  import_playbook: mkhomedir.yml
   when: ansible_os_family == "Debian"
 
 - name: Allow all users to log in
@@ -68,4 +69,5 @@
     mode: 0440
 
 # Turn on manual login, so users can type in the domain usernames.
-- import_playbook: manual_login.yml
+- name: Turn on manual login
+  import_playbook: manual_login.yml
