@@ -1,0 +1,15 @@
+- name: Edit pam-configs/mkhomedir file
+  copy:
+    src: files/pam_mkhomedir
+    dest: /usr/share/pam-configs/mkhomedir
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Enable the mkhomedir profile using pam-auth-update
+  command: sudo pam-auth-update --enable mkhomedir
+
+- name: Restart sssd
+  service:
+    name: sssd
+    state: restarted

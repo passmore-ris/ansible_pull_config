@@ -1,0 +1,8 @@
+- name: Turn on manual login
+  copy:
+    src: files/lightdm.conf
+    dest: /etc/lightdm/lightdm.conf
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_facts['distribution'] == 'Linux Mint'

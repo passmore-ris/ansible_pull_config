@@ -1,4 +1,4 @@
-# Ubuntu systems need to have the universe and multiverse repositories enabled. Linux Mint systems should have them enabled by default.
+/# Ubuntu systems need to have the universe and multiverse repositories enabled. Linux Mint systems should have them enabled by default.
 - name: Get current hostname
   command: hostname
   register: current_hostname
@@ -37,8 +37,6 @@
       - packagekit
   when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
 
-#-import_playbook: Here I'll import the playbook for altering pam
-
 #- name: install expect using pip
 #  pip:
 #    name: pexpect
@@ -52,3 +50,22 @@
     responses: 
       (?i)password*: "{{ domain_admin_password }}"
   no_log: true   # Don't want passwords shown in logs
+
+# Enable automatic creation of  home directories for each user.
+# This is automatically enabled in the RedHat family.
+- import_playbook: tasks/mkhomedir.yml
+  when: ansible_os_family == "Debian"
+
+- name: Allow all users to log in
+  command: sudo realm permit --all
+
+- name: Grant domain admins sudo access
+  copy:
+    src: files/sudoers_domain_admins
+    dest: /etc/sudoers.d/domain_admins
+    owner: root
+    group: root
+    mode: 0440
+
+# Turn on manual login, so users can type in the domain usernames.
+- import_playbook: tasks/manual_login.yml
