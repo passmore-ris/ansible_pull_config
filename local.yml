@@ -24,4 +24,11 @@
     - include_tasks: tasks/users.yml
     # Set cron jobs
     - include_tasks: tasks/cron.yml
+    # Join domain
     - include_tasks: tasks/domain_join.yml
+    # Enable automatic creation of home directories for Debian-based systems.
+    # This is automatically enabled in RedHat-based systems.
+    - include_tasks: tasks/mkhomedir.yml
+      when: ansible_os_family == 'Debian'
+    # Turn on manual login, so users can type in their domain usernames.
+    - include_tasks: tasks/manual_login.yml

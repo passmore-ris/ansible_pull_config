@@ -51,12 +51,6 @@
       (?i)password*: "{{ domain_admin_password }}"
   no_log: true   # Don't want passwords shown in logs
 
-# Enable automatic creation of  home directories for each user.
-# This is automatically enabled in the RedHat family.
-- name: Enable automatic creation of home directories
-  import_playbook: mkhomedir.yml
-  when: ansible_os_family == "Debian"
-
 - name: Allow all users to log in
   command: sudo realm permit --all
 
@@ -67,7 +61,3 @@
     owner: root
     group: root
     mode: 0440
-
-# Turn on manual login, so users can type in the domain usernames.
-- name: Turn on manual login
-  import_playbook: manual_login.yml
