@@ -49,4 +49,5 @@
     # must be specified in the --extra-vars argument in the original
     # ansible-pull command.
     command: sudo realm join -U "{{ domain_admin_username }}" "{{ domain }}"
-  responses: Password for *: "{{ domain_admin_password }}"
+    responses: "Password for *": "{{ domain_admin_password }}"
+  no_log: true   # Don't want passwords shown in logs
