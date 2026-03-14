@@ -41,6 +41,11 @@
 #  pip:
 #    name: pexpect
 
+- name: Check domain membership
+  command: realm list
+  register: realm_status
+  changed_when: false
+
 - name: Join host to domain
   expect:
     # The variables domain_admin_username and domain_admin_password
@@ -49,6 +54,7 @@
     command: sudo realm join -U "{{ domain_admin_username }}" "{{ domain }}"
     responses: 
       (?i)password*: "{{ domain_admin_password }}"
+  when: "domain not in realm_status.stdout"
 
 - name: Allow all users to log in
   command: sudo realm permit --all
