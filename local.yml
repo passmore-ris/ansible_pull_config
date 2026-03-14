@@ -35,6 +35,6 @@
     # Set the user's home directory on the file server to mount at ~/MySharedFolders
     - include_tasks: tasks/mount.yml
     # Configure the automatic setup of home profile for new users
-    - include_tasks: home_profile.yml
+    - include_tasks: taskshome_profile.yml
     # Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
-    - include_tasks: veyon.yml
+    - include_tasks: tasks/veyon.yml
