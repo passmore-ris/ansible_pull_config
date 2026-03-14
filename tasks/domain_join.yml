@@ -7,6 +7,7 @@
 - name: Set new hostname with domain
   hostname:
     name: "{{ current_hostname.stdout }}.{{ domain }}"
+  when: "'{{ domain }}' not in ansible_fqdn"
 
 - name: Modify resolved info
   lineinfile:
