@@ -1,13 +1,12 @@
 # Ubuntu systems need to have the universe and multiverse repositories enabled. Linux Mint systems should have them enabled by default.
 - name: Get current hostname
-  command: hostname
+  command: hostname -s
   register: current_hostname
   changed_when: false
 
 - name: Set new hostname with domain
   hostname:
     name: "{{ current_hostname.stdout }}.{{ domain }}"
-  when: "'{{ domain }}' not in ansible_fqdn"
 
 - name: Modify resolved info
   lineinfile:
@@ -50,7 +49,6 @@
     command: sudo realm join -U "{{ domain_admin_username }}" "{{ domain }}"
     responses: 
       (?i)password*: "{{ domain_admin_password }}"
-  no_log: true   # Don't want passwords shown in logs
 
 - name: Allow all users to log in
   command: sudo realm permit --all
