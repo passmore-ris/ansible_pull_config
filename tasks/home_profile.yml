@@ -1,0 +1,14 @@
+- name: Turn off automatic home profile configuration
+  lineinfile:
+    path: /etc/xdg/user-dirs.conf
+    search_string: "enabled=True"
+    line: enabled=False
+
+# Uncomment when the skel directory is ready.
+#- name: Specify copy skel configuration to /etc/skel
+#  copy:
+#    src: files/skel
+#    dest: /etc/skel
+#    owner: root
+#    group: root
+#    mode: '0644'

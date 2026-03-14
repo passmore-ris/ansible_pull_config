@@ -1,0 +1,30 @@
+- name: Download Veyon .deb
+  ansible.builtin.get_url:
+    url: https://github.com/veyon/veyon/releases/download/v4.10.1/veyon_4.10.1.0-ubuntu.24.04_amd64.deb
+    dest: /tmp/veyon.deb
+  when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
+
+- name: Install Veyon
+  ansible.builtin.apt:
+    deb: /tmp/veyon.deb
+  when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
+
+- name: Transfer Veyon configuration
+  copy:
+    src: files/veyon_config.json
+    dest: /etc
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Import Veyon configuration
+  command: sudo veyon-cli config import /etc/veyon_config.json
+
+# Need to make it so that only domain admins and teachers can access it.
+- name: Prevent pupils from executing Veyon-Master
+  ansible.posix.acl:
+    path: /usr/bin/veyon-master
+    entity: "AD\\Pupils"
+    etype: group
+    permissions: r--
+    state: present

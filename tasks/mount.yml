@@ -1,0 +1,18 @@
+- name: Install libpam-mount
+  package:
+    name: libpam-mount
+    state: present
+
+- name: Add mount to pam_mount.conf.xml
+  blockinfile:
+    path: /etc/security/pam_mount.conf.xml
+    insertafter: "<!-- pam_mount parameters: Volume-related -->"
+    block: |
+      <volume
+        fstype="cifs"
+        server="RISFileServer.ad.rischool.ru"
+        path="home_folders$/%(DOMAIN_USER)"
+        mountpoint="~/MySharedFolders"
+        options="sec=krb5i,vers=3.0,cruid=%(USERUID)"
+      />
+    state: "present"
