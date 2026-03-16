@@ -1,4 +1,4 @@
 - name: Copy skel contents to /etc/skel
   ansible.posix.synchronize:
-    src: files/skel/
+    src: files/skel
     dest: /etc/skel
