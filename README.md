@@ -1,5 +1,12 @@
 # ansible_pull_config
-This contains the ansible configuration used to configure Linux workstations running ansible pull.
+This contains the ansible configuration used to configure Linux workstations running ansible pull. This playbook is only confirmed to work on **Linux Mint** at the moment. It is deigned to set up a school desktop running Linux Mint, such that pupils' accounts in an Active Directory server can be used on any workstation, with a roaming "MySharedFolders" folder.
+
+## Requirements
+For this to be run, the following is needed:
+- Linux Mint workstations.
+- An Active Directory server
+- A file server with home directories for each user.
+The variables in *local.yml* should be changed prior to its use.
 
 ## Running the playbook
 On the target machine, run the command
@@ -52,3 +59,6 @@ Mount the user's home directory located in a separate file server onto their hom
 
 ### Set Up Veyon
 Installs and configures Veyon on the host machine. Members of the domain group **Pupils** are prevented from executing */usr/bin/veyon-master*.
+
+### Configure /etc/skel
+This configures the new home profile created for each user. So far, the main feature is a Mozilla Firefox profile.
