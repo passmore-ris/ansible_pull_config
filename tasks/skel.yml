@@ -1,0 +1,7 @@
+- name: Copy skel contents to /etc/skel
+  copy:
+    src: files/skel
+    dest: /etc/skel
+    owner: root
+    group: root
+    mode: '0644'

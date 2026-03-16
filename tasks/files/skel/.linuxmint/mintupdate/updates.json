@@ -1,0 +1,27 @@
+{
+  "updates": {
+    "cinnamon": {
+      "type": "package",
+      "since": "2026.01.26",
+      "days": 1
+    },
+    "cinnamon-settings-daemon": {
+      "type": "package",
+      "since": "2026.01.26",
+      "days": 1
+    },
+    "muffin": {
+      "type": "package",
+      "since": "2026.01.26",
+      "days": 1
+    },
+    "org.gimp.GIMP": {
+      "type": "flatpak",
+      "since": "2026.01.26",
+      "days": 1
+    }
+  },
+  "version": 1,
+  "checked": "2026.01.26",
+  "notified": "2026.01.22"
+}

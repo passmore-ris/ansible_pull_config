@@ -1,0 +1,111 @@
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting XAUTHORITY=/home/localadmin/.Xauthority
+/etc/X11/Xsession.d/30x11-common_xresources: line 16: has_option: command not found
+/etc/X11/Xsession.d/75dbus_dbus-launch: line 9: has_option: command not found
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+/etc/X11/Xsession.d/90x11-common_ssh-agent: line 9: has_option: command not found
+dbus-update-activation-environment: setting SHELL=/bin/bash
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+dbus-update-activation-environment: setting GTK_IM_MODULE=ibus
+dbus-update-activation-environment: setting LANGUAGE=en_US
+dbus-update-activation-environment: setting LC_ADDRESS=ru_RU.UTF-8
+dbus-update-activation-environment: setting LC_NAME=ru_RU.UTF-8
+dbus-update-activation-environment: setting XMODIFIERS=@im=ibus
+dbus-update-activation-environment: setting DESKTOP_SESSION=cinnamon
+dbus-update-activation-environment: setting LC_MONETARY=ru_RU.UTF-8
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting PWD=/home/localadmin
+dbus-update-activation-environment: setting XDG_SESSION_DESKTOP=cinnamon
+dbus-update-activation-environment: setting LOGNAME=localadmin
+dbus-update-activation-environment: setting XDG_SESSION_TYPE=x11
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting XAUTHORITY=/home/localadmin/.Xauthority
+dbus-update-activation-environment: setting XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/localadmin
+dbus-update-activation-environment: setting GDM_LANG=en_US
+dbus-update-activation-environment: setting HOME=/home/localadmin
+dbus-update-activation-environment: setting IM_CONFIG_PHASE=1
+dbus-update-activation-environment: setting LANG=en_US.UTF-8
+dbus-update-activation-environment: setting LC_PAPER=ru_RU.UTF-8
+dbus-update-activation-environment: setting CLUTTER_IM_MODULE=ibus
+dbus-update-activation-environment: setting XDG_SESSION_CLASS=user
+dbus-update-activation-environment: setting LC_IDENTIFICATION=ru_RU.UTF-8
+dbus-update-activation-environment: setting USER=localadmin
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting SHLVL=0
+dbus-update-activation-environment: setting LC_TELEPHONE=ru_RU.UTF-8
+dbus-update-activation-environment: setting QT_IM_MODULE=ibus
+dbus-update-activation-environment: setting LC_MEASUREMENT=ru_RU.UTF-8
+dbus-update-activation-environment: setting XDG_RUNTIME_DIR=/run/user/1000
+dbus-update-activation-environment: setting GTK3_MODULES=xapp-gtk3-module
+dbus-update-activation-environment: setting XDG_DATA_DIRS=/usr/share/cinnamon:/home/localadmin/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+dbus-update-activation-environment: setting GDMSESSION=cinnamon
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting LC_NUMERIC=ru_RU.UTF-8
+dbus-update-activation-environment: setting _=/usr/bin/dbus-update-activation-environment
+discover_other_daemon: 1discover_other_daemon: 1discover_other_daemon: 1[cinnamon-settings-daemon-smartcard] Failed to start: no suitable smartcard driver could be found
+[cinnamon-settings-daemon-smartcard] Failed to start: no suitable smartcard driver could be found
+/usr/bin/cinnamon-launcher:61: DeprecationWarning: This process (pid=1449) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  self.cinnamon_pid = os.fork()
+Gjs-Message: 22:29:00.565: Profiler is disabled. Not setting up signals.
+Gjs-Message: 22:29:00.890: JS LOG: About to start Cinnamon (X11 backend)
+Gjs-Message: 22:29:01.004: JS LOG: [LookingGlass/info] Cinnamon.AppSystem.get_default() started in 1 ms
+Gjs-Message: 22:29:01.012: JS LOG: [LookingGlass/info] loading user theme: /usr/share/themes/Mint-Y-Dark-Aqua/cinnamon/cinnamon.css
+Gjs-Message: 22:29:01.039: JS LOG: [LookingGlass/info] added icon directory: /usr/share/themes/Mint-Y-Dark-Aqua/cinnamon
+Gjs-Message: 22:29:01.163: JS LOG: [LookingGlass/info] Animations: enabled (hardware rendering, enabled in settings)
+Gjs-Message: 22:29:01.204: JS LOG: [LookingGlass/info] NetworkManager agent: enabled
+Gjs-Message: 22:29:01.212: JS LOG: [LookingGlass/info] Cinnamon registered as the Polkit agent for the active session (c2)
+Gjs-Message: 22:29:01.213: JS LOG: [LookingGlass/info] SSH agent: enabled
+Gjs-Message: 22:29:01.221: JS LOG: [LookingGlass/info] loaded at Mon Jan 26 2026 22:29:01 GMT+0300 (Moscow Standard Time)
+Gjs-Message: 22:29:01.221: JS LOG: Cinnamon started at Mon Jan 26 2026 22:29:01 GMT+0300 (Moscow Standard Time)
+current session already has an ibus-daemon.
+Gjs-Message: 22:29:01.333: JS LOG: [LookingGlass/info] ExtensionSystem started in 1 ms
+Gjs-Message: 22:29:01.333: JS LOG: [LookingGlass/info] DeskletManager started in 1 ms
+Gjs-Message: 22:29:01.333: JS LOG: [LookingGlass/info] SearchProviderManager started in 1 ms
+Gjs-Message: 22:29:01.541: JS LOG: [LookingGlass/info] Loaded applet separator@cinnamon.org in 121 ms
+Gjs-Message: 22:29:01.593: JS LOG: [LookingGlass/info] Loaded applet cornerbar@cinnamon.org in 46 ms
+Cannot register authentication agent: GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: An authentication agent already exists for the given subject
+Gjs-Message: 22:29:01.857: JS LOG: [LookingGlass/info] Loaded applet printers@cinnamon.org in 264 ms
+Gjs-Message: 22:29:01.893: JS LOG: [LookingGlass/info] Loaded applet removable-drives@cinnamon.org in 36 ms
+Gjs-Message: 22:29:01.919: JS LOG: [LookingGlass/info] Role locked: tray
+Gjs-Message: 22:29:01.938: JS LOG: [LookingGlass/info] Loaded applet systray@cinnamon.org in 38 ms
+Gjs-Message: 22:29:01.974: JS LOG: [LookingGlass/info] Loaded applet keyboard@cinnamon.org in 32 ms
+Gjs-Message: 22:29:02.036: JS LOG: [LookingGlass/info] Loaded applet favorites@cinnamon.org in 62 ms
+Gjs-Message: 22:29:02.202: JS LOG: [LookingGlass/info] Loaded applet calendar@cinnamon.org in 165 ms
+Gjs-Message: 22:29:02.266: JS LOG: [LookingGlass/info] Loaded applet notifications@cinnamon.org in 63 ms
+Gjs-Message: 22:29:02.282: JS LOG: [LookingGlass/info] Loaded applet xapp-status@cinnamon.org in 13 ms
+Gjs-Message: 22:29:02.356: JS LOG: [LookingGlass/info] Role locked: panellauncher
+Gjs-Message: 22:29:02.356: JS LOG: [LookingGlass/info] Role locked: windowattentionhandler
+Gjs-Message: 22:29:02.368: JS LOG: [LookingGlass/info] Monitor Watch List updated: [0]
+Gjs-Message: 22:29:02.369: JS LOG: [LookingGlass/info] Loaded applet grouped-window-list@cinnamon.org in 87 ms
+Gjs-Message: 22:29:02.527: JS LOG: [LookingGlass/info] Loaded applet power@cinnamon.org in 158 ms
+csd-power-Message: 22:29:02.624: gnome-rr not supported for display backlight, using backlight-helper for future calls
+Gjs-Message: 22:29:02.750: JS LOG: [LookingGlass/info] Loaded applet sound@cinnamon.org in 220 ms
+Gjs-Message: 22:29:02.785: JS LOG: [LookingGlass/info] Loaded applet network@cinnamon.org in 33 ms
+Nemo-Message: 22:29:02.841: nemo-desktop: session is cinnamon, establishing proxy
+blueman-applet 22.29.02 WARNING  PluginManager:150 __load_plugin: Not loading PPPSupport because its conflict has higher priority
+Gjs-Message: 22:29:02.856: JS LOG: calendar@cinnamon.org: Calendar events supported.
+blueman-applet 22.29.02 WARNING  PluginManager:150 __load_plugin: Not loading DhcpClient because its conflict has higher priority
+Gjs-Message: 22:29:03.140: JS LOG: [LookingGlass/info] Loaded applet menu@cinnamon.org in 352 ms
+Gjs-Message: 22:29:03.141: JS LOG: [LookingGlass/info] AppletManager started in 1832 ms
+Gjs-Message: 22:29:03.149: JS LOG: [LookingGlass/info] Cinnamon took 2258 ms to start
+Gjs-Message: 22:29:03.283: JS LOG: Unknown network device type, is 32
+Gjs-Message: 22:29:03.408: JS LOG: [LookingGlass/info] Adding XAppStatusIcon: :1.75 (:1.59/org/x/StatusIcon/Icon)
+Gjs-Message: 22:29:03.667: JS LOG: [LookingGlass/info] GPU offload supported: false
+Gjs-Message: 22:29:05.073: JS LOG: Enabling WindowAttentionHandler
+Gjs-Message: 22:29:17.197: JS LOG: [LookingGlass/info] Updating user
+Gjs-Message: 22:29:24.954: JS LOG: [LookingGlass/info] Adding XAppStatusIcon: mintUpdate.py (:1.88/org/x/StatusIcon/Icon)
+Gjs-Message: 22:29:49.966: JS LOG: [LookingGlass/info] Adding XAppStatusIcon: mintreport (:1.91/org/x/StatusIcon/Icon)
+Gjs-Message: 22:29:49.970: JS LOG: [LookingGlass/info] Adding XAppStatusIcon: process-monitor (:1.91/org/x/StatusIcon/Icon_1)
+Gjs-Message: 22:31:16.730: JS LOG: [LookingGlass/info] Adding XAppStatusIcon:  (:1.59/org/x/StatusIcon/Icon_1)
+Gjs-Message: 22:37:44.664: JS LOG: [LookingGlass/info] Updating user
+
+(csd-media-keys:1344): csd-media-keys-WARNING **: 22:55:10.809: Unable to get default source
+
+(csd-media-keys:1344): csd-media-keys-WARNING **: 22:55:10.810: Unable to get default sink
+
+(csd-media-keys:1344): csd-media-keys-WARNING **: 22:55:26.371: Unable to get default sink
+Gjs-Message: 22:55:27.389: JS LOG: [LookingGlass/info] Removing XAppStatusIcon: veyon (:1.59/org/x/StatusIcon/Icon_1)

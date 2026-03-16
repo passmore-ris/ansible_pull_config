@@ -1,0 +1,12 @@
+10:46:40.491 INFO    thonny: Thonny version: 4.0.1
+10:46:40.491 INFO    thonny: cwd: /home/localadmin
+10:46:40.491 INFO    thonny: original argv: ['/usr/bin/python3', '/usr/bin/thonny']
+10:46:40.491 INFO    thonny: sys.executable: /usr/bin/python3
+10:46:40.491 INFO    thonny: sys.argv: ['/usr/bin/thonny']
+10:46:40.491 INFO    thonny: sys.path: ['/usr/bin', '/usr/lib/python312.zip', '/usr/lib/python3.12', '/usr/lib/python3.12/lib-dynload', '/usr/local/lib/python3.12/dist-packages', '/usr/lib/python3/dist-packages', '/usr/lib/python3.12/dist-packages']
+10:46:40.491 INFO    thonny: sys.flags: sys.flags(debug=0, inspect=0, interactive=0, optimize=0, dont_write_bytecode=0, no_user_site=0, no_site=0, ignore_environment=0, verbose=0, bytes_warning=0, quiet=0, hash_randomization=1, isolated=0, dev_mode=False, utf8_mode=0, warn_default_encoding=0, safe_path=False, int_max_str_digits=4300)
+10:46:41.619 INFO    thonny.plugins.cpython_frontend.cp_front: Creating LocalCPythonProxy
+10:46:41.620 INFO    thonny.running: Starting the backend: ['/usr/bin/python3', '-u', '-B', '-m', 'thonny.plugins.cpython_backend.cp_launcher', '/home/localadmin'] /home/localadmin
+10:46:44.492 INFO    thonny.running: Killing backend process
+10:46:44.492 INFO    thonny.shell: BaseShellText._on_backend_terminated
+10:46:44.499 INFO    thonny.running: Reader got EOF

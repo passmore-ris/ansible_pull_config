@@ -11,7 +11,7 @@
         }
     },
     "Core": {
-        "ApplicationVersion": 9,
+        "ApplicationVersion": 10,
         "InstallationID": "c8d9cb78-82fb-4c9a-9cc6-d4f2739d4140",
         "PluginVersions": {
             "JsonStoreObject": {
@@ -24,6 +24,7 @@
                 "{39d7a07f-94db-4912-aa1a-c4df8aee3879}": "1.1",
                 "{4122e8ca-b617-4e36-b851-8e050ed2d82e}": "1.2",
                 "{4790bad8-4c56-40d5-8361-099a68f0c24b}": "1.1",
+                "{63928a8a-4c51-4bfd-888e-9e13c6f3907a}": "1.1",
                 "{67dfc1c1-8f37-4539-a298-16e74e34fd8b}": "1.1",
                 "{6f0a491e-c1c6-4338-8244-f823b0bf8670}": "1.2",
                 "{80580500-2e59-4297-9e35-e53959b028cd}": "1.2",
@@ -39,7 +40,7 @@
     "LDAP": {
         "BaseDN": "dc=ad,dc=rischool,dc=ru",
         "BindDN": "AD\\VeyonReader",
-        "BindPassword": "a94594fe75224698abb1543c88c00c529cee46ed60c121a90b5363940da091093aaf5bc09d8ff086e4e486acacfb7b372eac4f1a515a6fdbf8649c273072fc96ea9241d528e976a0184bd79a14284eb2a329326fe091b50914dc2b61070662b05194300513278da3f94b6230db717d7c43941bc7dcb58f3c6b1056e46257ba0382e699610bcae5ad9ef4a842fd0565e0fdfe1bf1d50c5429503b971f91138c77d21efb5592644be199ee10e97f2817968c0eeff37f4528de4b3529f1c7ea8fcd9cd888677bb698b9fe9f6a57ad9b9ae0ac93058823c913223e6d206d29746deb50cf6fb5706a9698bd997b05d0a1b166c77d22a282196204fa39f6d8a8bc7ba3d368f679f906a10e247d50bdb79ae4c6f13d42e0769d3ae65110fdc2fc09b1f2c67baba73d59314780438d9914aaad968b871fe6a4a519a9c56bdbf3390c876773ba99e9cffc4fe856175e0b756c82dff93f37bb627d5e5b8339c0b7434cef1ba15917d7e239156adb08bdf9a827f508acb03fdcd0472a9c677e7b8f67b992c9a074ffc37c27ee2b392fb05113fa0eec181babc6fe5d47c2a0ea14de6acd5976ccfe1396fbca1357edf7ecc2ea410521501c54e8a1461260c4c252bff9487ab72b10a17d2a059a43c54965f4783e4cc2edfe348f5b8385566a1ed81dfa3da8aaa7c4566e8ad80b433070cac2a4f569710204713cd6e032b8453b16a45af658ee",
+        "BindPassword": "62a1c7e1578461cb6d56b79afd3f76f4579c2b2b7743f4c0b9d370856cd96823df27e7a1c320d5450c126ce5881f9ae2e9ce58882465e9a90704ac395e704e76778feacae78012ce37c726bdde93852a46b1e6115cfe79fcc908d4bcd5255542ca2b7ae2a20d5f65f857713d3198b224157d6bd3fbceccc4f19ee96da4906b25905d91fa345c59a862b64e76828894941a53010a93c705db3dc78bce0ba36a1f30adc5b60fd32116e9e762ccdc928a8a40af9ac19d406fb054a9278c4190f2960e50b918eb261ac8b3c6f16845abb2746fde5b6da5b48f9dddda007ab36b67803d40a7d1faf00278b88531b9214910fc169b78501f21e6faf408b128774808b4e163ebebe97c9cfbb1ba617b51a568185ca836c0ca3b4f9c9ad677d7b88984a2db816b26245ebb70716b3fa5dfcbac84ea021fc46a41585aaba58680df53165b16cd662f3549ff24f8897678e4c053ce87cfe227917b4ab47a3db224693302a0d450c0c40d7d342637ef59f8e2061d0bf4c10d3bb2172149cab12e721c66efa1ce6eb03746404168b3b49eea66343b18985e21c7868ac132c9851ae8d5cb567c4fd182899a047bd6f8f127075f1d457576e5c2d4e4d6e19c29e20fa1737dc432d651bca35ee4a884a51fd14318a06a61e63adf60a6f811692487ca395d3360649b5189f7e2621e840b9bfc336bcbc997aae0410d462bfe03efca01c3bda271a8",
         "ComputerGroupsFilter": "(objectClass=computer)",
         "ComputerHostNameAsFQDN": "true",
         "ComputerHostNameAttribute": "dNSHostName",
@@ -48,12 +49,12 @@
         "ComputerLocationsByContainer": "false",
         "ComputerMacAddressAttribute": "wWWHomePage",
         "ComputerTree": "OU=Workstations",
-        "ConnectionSecurity": 1,
+        "ConnectionSecurity": "1",
         "GroupMemberAttribute": "member",
         "LocationNameAttribute": "location",
         "RecursiveSearchOperations": "true",
         "ServerHost": "192.168.88.252",
-        "TLSVerifyMode": 1,
+        "TLSVerifyMode": "1",
         "UseBindCredentials": "true",
         "UserLoginNameAttribute": "sAMAccountName"
     },
@@ -70,17 +71,20 @@
     },
     "Network": {
         "FirewallExceptionEnabled": "1",
-        "VeyonServerPort": 11100
+        "VeyonServerPort": "11100"
     },
     "NetworkObjectDirectory": {
         "Plugin": "6f0a491e-c1c6-4338-8244-f823b0bf8670"
     },
     "UI": {
-        "ColorScheme": 1
+        "ColorScheme": "1"
     },
     "UserGroups": {
         "Backend": "6f0a491e-c1c6-4338-8244-f823b0bf8670",
         "UseDomainUserGroups": "false"
+    },
+    "VncServer": {
+        "Plugin": "00000000-0000-0000-0000-000000000000"
     },
     "Windows": {
         "SoftwareSASEnabled": "1"

@@ -1,0 +1,16 @@
+11:11:01: Audacity 3.4.2
+11:11:01: FFmpeg libraries loaded successfully from: /lib/x86_64-linux-gnu/libavformat.so.60.16.100
+11:11:06: sqlite3 message: (1) no such table: project in "SELECT 1 FROM project LIMIT 1;"
+11:11:06: FFmpeg libraries loaded successfully from: /lib/x86_64-linux-gnu/libavformat.so.60.16.100
+11:12:35: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:12:35: Operation 'Reverb' took 0.120000 seconds. Poll was called 1 times and took 0.000001 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:01: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:01: Operation 'Invert' took 0.058000 seconds. Poll was called 2 times and took 0.000003 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:09: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:09: Operation 'Invert' took 0.028000 seconds. Poll was called 2 times and took 0.000003 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:18: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:18: Operation 'Reverse' took 0.055000 seconds. Poll was called 2 times and took 0.000003 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:54: Operation 'Mix and Render' took 0.041000 seconds. Poll was called 1 times and took 0.000002 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:54: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:54: Operation 'Change Pitch' took 0.068000 seconds. Poll was called 2 times and took 0.000002 seconds. Yield was called 0 times and took 0.000000 seconds.
+11:13:59: Operation 'Change Pitch' took 4.660000 seconds. Poll was called 43 times and took 0.349484 seconds. Yield was called 39 times and took 0.331306 seconds.
