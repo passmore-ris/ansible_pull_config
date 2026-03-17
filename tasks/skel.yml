@@ -1,4 +1,4 @@
 - name: Copy skel contents to /etc/skel
   unarchive:
     src: files/skel.tar.gz
-    dest: /etc/skel
+    dest: /etc
