@@ -11,6 +11,7 @@
       - audacity
       - dia
       - tmux
+      - fd
 
 - name: Install packages with snap
   snap:
