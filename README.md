@@ -37,6 +37,7 @@ The following packages are set to be installed on the workstations:
 - Pinta
 - SqliteBrowser
 - Sublime
+- tmux
 
 ### Edit Thonny
 Thonny needs to be edited a bit before it can be deployed.
@@ -61,4 +62,4 @@ Mount the user's home directory located in a separate file server onto their hom
 Installs and configures Veyon on the host machine. Members of the domain group **Pupils** are prevented from executing */usr/bin/veyon-master*.
 
 ### Configure /etc/skel
-This configures the new home profile created for each user. So far, the main feature is a Mozilla Firefox profile.
+This configures the new home profile created for each user. So far, the main feature is a Mozilla Firefox profile. The default language of LibreOffice has also been changed to Russian.
