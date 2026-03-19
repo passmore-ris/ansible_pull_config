@@ -2,3 +2,6 @@
   unarchive:
     src: files/skel.tar.gz
     dest: /etc
+    owner: root
+    group: root
+    mode: '0644'
