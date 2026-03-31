@@ -38,5 +38,5 @@
     - include_tasks: tasks/home_profile.yml
     # Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
     - include_tasks: tasks/veyon.yml
-    # Configure new pofiles with /etc/skel
+    # Configure new profiles with /etc/skel
     - include_tasks: tasks/skel.yml
