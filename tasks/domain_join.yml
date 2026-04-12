@@ -17,7 +17,7 @@
 - name: Modify resolved info
   lineinfile:
     path: /etc/systemd/resolved.conf
-    search_string: '#DNS='
+    regexp: '^#DNS='
     line: DNS={{ dc_ip }}
     owner: root
     group: root
