@@ -1,7 +1,14 @@
 - name: Install libpam-mount
-  package:
+  apt:
     name: libpam-mount
     state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Install pam_mount
+  dnf:
+    name: pam_mount
+    state: present
+  when: ansible_os_family == 'RedHat' or ansible_facts['distribution'] == 'MOS'
 
 - name: Add mount to pam_mount.conf.xml
   blockinfile:

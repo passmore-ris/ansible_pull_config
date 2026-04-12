@@ -4,11 +4,9 @@
     src: /etc/apt/preferences.d/nosnap.pref
     dest: /etc/apt/preferences.d/nosnap.backup
   ignore_errors: yes
-  when: ansible_facts['distribution'] == 'Linux Mint'
 
 - name: Remove file preventing installation of snapd
   file:
     path: /etc/apt/preferences.d/nosnap.pref
     state: absent
   ignore_errors: yes
-  when: ansible_facts['distribution'] == 'Linux Mint'

@@ -1,4 +1,4 @@
-- name: Turn on manual login
+- name: Turn on manual login for Linux Mint workstations
   copy:
     src: files/lightdm.conf
     dest: /etc/lightdm/lightdm.conf
@@ -6,3 +6,12 @@
     group: root
     mode: '0644'
   when: ansible_facts['distribution'] == 'Linux Mint'
+
+- name: Turn on manual login for MOS workstations
+  copy:
+    src: files/uid.conf
+    dest: /etc/sddm.conf.d/uid.conf
+    owner: root
+    group: root
+    mode: '0664'
+  when: ansible_facts['distribution'] == 'MOS'

@@ -1,3 +1,8 @@
+- name: install cronie # MOS doesn't have it for some reason
+  package:
+    name: cronie
+  when: ansible_facts['distribution'] == 'MOS'
+
 - name: install cron job (ansible-pull)
   cron:
     user: ansible

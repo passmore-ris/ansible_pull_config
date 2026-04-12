@@ -7,7 +7,7 @@
 
   pre_tasks:
     - name: update repositories
-      apt:
+      package:
         update_cache: yes
       changed_when: False
 
@@ -16,10 +16,12 @@
     #- include_tasks: tasks/repositories.yml
     # Configure snap installer
     - include_tasks: tasks/snapd.yml
+      when: ansible_facts['distribution'] == 'Linux Mint'
     # Install packages
     - include_tasks: tasks/packages.yml
     # Edit packages
     - include_tasks: tasks/thonny.yml # Thonny needs to be...edited a little bit. Removes the flag.
+      when: ansible_facts['distribution'] != 'MOS' # Not needed on the MOS OS
     # Make users, including ansible user for automatic pulling
     - include_tasks: tasks/users.yml
     # Set cron jobs

@@ -37,6 +37,18 @@
       - packagekit
   when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
 
+- name: Install dependencies for MOS
+  dnf:
+    name:
+      - realmd
+      - sssd
+      - sssd-tools
+      - samba-common
+      - oddjob
+      - oddjob-mkhomedir
+      - packagekit
+  when: ansible_facts['distribution'] == 'MOS'
+
 #- name: install expect using pip
 #  pip:
 #    name: pexpect

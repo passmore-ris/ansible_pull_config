@@ -1,13 +1,18 @@
-- name: Download Veyon .deb
-  ansible.builtin.get_url:
-    url: https://github.com/veyon/veyon/releases/download/v4.10.1/veyon_4.10.1.0-ubuntu.24.04_amd64.deb
-    dest: /tmp/veyon.deb
-  when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
+#- name: Download Veyon .deb
+#  ansible.builtin.get_url:
+#    url: https://github.com/veyon/veyon/releases/download/v4.10.1/veyon_4.10.1.0-ubuntu.24.04_amd64.deb
+#    dest: /tmp/veyon.deb
+#  when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
+#
+#- name: Install Veyon
+#  ansible.builtin.apt:
+#    deb: /tmp/veyon.deb
+#  when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
 
 - name: Install Veyon
-  ansible.builtin.apt:
-    deb: /tmp/veyon.deb
-  when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
+  package:
+    name: veyon
+    state: present
 
 - name: Transfer Veyon configuration
   copy:
