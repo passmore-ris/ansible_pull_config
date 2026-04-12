@@ -6,10 +6,16 @@
     dc_ip: 192.168.88.252  # IP address of domain controller
 
   pre_tasks:
-    - name: update repositories
-      package:
+    - name: Update apt repositories
+      apt:
         update_cache: yes
       changed_when: False
+      when: ansible_os_family == "Debian"
+    - name: Update dnf repositories
+      dnf:
+        update_cache: yes
+      changed_when: false
+      when: ansible_os_family == "RedHat" or ansible_facts['distribution'] == 'MOS'
 
   tasks:
     # Change repositories to Yandex mirrors
