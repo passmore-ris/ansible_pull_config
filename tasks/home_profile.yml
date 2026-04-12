@@ -1,5 +1,6 @@
 - name: Turn off automatic home profile configuration
   lineinfile:
     path: /etc/xdg/user-dirs.conf
-    search_string: "enabled=True"
+    regexp: "^enabled=True"
     line: enabled=False
+    state: present
