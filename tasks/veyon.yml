@@ -33,8 +33,8 @@
     etype: group
     permissions: r--
     state: present
-  when: ansible_facts['distribution'] != 'MOS' # MOS uses an old version of ansible that doesn't work.
+  when: ansible_facts['distribution'] != 'MOS' # MOS uses an old version of ansible that doesn't work with this module.
 
 - name: Prevent pupils from executing Veyon-Master (MOS)
   command: setfacl -m g:"AD\\Pupils":r-- /usr/bin/veyon-master
-  when: ansible_facts['distrubtion'] == 'MOS'
+  when: ansible_facts['distribution'] == 'MOS'
