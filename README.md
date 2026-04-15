@@ -1,9 +1,10 @@
 # ansible_pull_config
 This contains the ansible configuration used to configure Linux workstations running ansible pull. This playbook is only confirmed to work on **Linux Mint** at the moment. It is deigned to set up a school desktop running Linux Mint, such that pupils' accounts in an Active Directory server can be used on any workstation, with a roaming "MySharedFolders" folder.
+The configuration works on MOS.OS, however the mounted folder doesn't appear. It's not clear how to even mount a network share on MOS.OS in the first place.
 
 ## Requirements
 For this to be run, the following is needed:
-- Linux Mint workstations.
+- Linux Mint/MOS.OS workstations.
 - An Active Directory server
 - A file server with home directories for each user.
 The variables in *local.yml* should be changed prior to its use.
@@ -24,7 +25,6 @@ Ensure *snap* is installed to allow for installation of certain packages.
 ### Install Packages
 The following packages are set to be installed on the workstations:
 - htop
-- Openshot
 - Anki
 - Inkscape
 - Geany
@@ -40,7 +40,7 @@ The following packages are set to be installed on the workstations:
 - tmux
 
 ### Edit Thonny
-Thonny needs to be edited a bit before it can be deployed.
+Thonny needs to be edited a bit before it can be deployed. This is not needed for MOS.OS workstations.
 
 ### Set up cron job
 The playbook also creates a sudo user called **ansible**, and gives it a cron job of running ansible-pull on the repository every ten minutes, and only executing ansible-pull if there have been any changes to this repository.
@@ -62,4 +62,4 @@ Mount the user's home directory located in a separate file server onto their hom
 Installs and configures Veyon on the host machine. Members of the domain group **Pupils** are prevented from executing */usr/bin/veyon-master*.
 
 ### Configure /etc/skel
-This configures the new home profile created for each user. So far, the main feature is a Mozilla Firefox profile. The default language of LibreOffice has also been changed to Russian.
+This configures the new home profile created for each user. So far, the main feature is a Mozilla Firefox profile.
