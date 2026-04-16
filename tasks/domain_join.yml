@@ -15,6 +15,7 @@
   command: hostnamectl set-hostname "{{ current_hostname.stdout }}.{{ domain }}"
   become: true
   when: ansible_facts['distribution'] == 'MOS'
+  changed_when: false
 
 - name: Modify resolved info
   lineinfile:
