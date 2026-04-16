@@ -8,10 +8,12 @@
   hostname:
     name: "{{ current_hostname.stdout }}.{{ domain }}"
   when: ansible_facts['distribution'] != 'MOS'
+  changed_when: false
 
 # MOS OS is special and needs its own little hostname module
 - name: Set new hostname with domain (MOS.OS)
-  command: sudo hostnamectl set-hostname "{{ current_hostname.stdout }}.{{ domain }}"
+  command: hostnamectl set-hostname "{{ current_hostname.stdout }}.{{ domain }}"
+  become: true
   when: ansible_facts['distribution'] == 'MOS'
 
 - name: Modify resolved info
@@ -27,6 +29,7 @@
   service:
     name: systemd-resolved
     state: restarted
+  changed_when: false
 
 - name: Install dependencies
   apt:
@@ -76,6 +79,7 @@
 
 - name: Allow all users to log in
   command: sudo realm permit --all
+  changed_when: false
 
 - name: Grant domain admins sudo access
   copy:

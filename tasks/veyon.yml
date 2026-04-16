@@ -24,6 +24,7 @@
 
 - name: Import Veyon configuration
   command: sudo veyon-cli config import /etc/veyon_config.json
+  changed_when: false
 
 # Need to make it so that only domain admins and teachers can access it.
 - name: Prevent pupils from executing Veyon-Master
