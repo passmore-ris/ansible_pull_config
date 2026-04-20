@@ -1,0 +1,5 @@
+# Kiosk needs to be removed
+- name: Remove Kiosk
+  command: dnf remove -y mostech-kiosk
+  become: true
+  changed_when: false

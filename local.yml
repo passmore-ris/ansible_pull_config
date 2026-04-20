@@ -48,3 +48,6 @@
     - include_tasks: tasks/veyon.yml
     # Configure new profiles with /etc/skel
     - include_tasks: tasks/skel.yml
+    # Delete KIOSK from MOS devices. This, along with kiosk.yml, can be deleted after a while.
+    - include_tasks: tasks/kiosk.yml
+      when: ansible_facts['distribution'] == 'MOS'
