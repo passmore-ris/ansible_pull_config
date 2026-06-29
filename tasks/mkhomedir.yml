@@ -9,8 +9,8 @@
 - name: Enable the mkhomedir profile using pam-auth-update
   ansible.builtin.command: sudo pam-auth-update --enable mkhomedir
 
-- name: Restart sssd
-  ansible.builtin.service:
-    name: sssd
-    state: restarted
-  when: "'sssd' in ansible_facts.packages"
+# - name: Restart sssd
+#   ansible.builtin.service:
+#     name: sssd
+#     state: restarted
+#   when: "'sssd' in ansible_facts.packages"
