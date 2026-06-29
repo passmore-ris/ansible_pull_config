@@ -13,9 +13,8 @@
     name: turbowarp
     types: deb
     uris: https://releases.turbowarp.org/deb
-    suites:
-      - stable
-      - main
+    suites: stable
+    components: main
     architectures: amd64
     signed_by: https://desktop.turbowarp.org/release-signing-key.gpg
 
