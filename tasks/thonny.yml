@@ -8,5 +8,3 @@
   ansible.builtin.file:
     path: /usr/lib/python3/dist-packages/thonny/workbench.py
     attributes: +i
-  register: copy_result
-  changed_when: "'i' not in copy_result.diff.before.attributes"
