@@ -1,5 +1,5 @@
 - name: Turn off automatic home profile configuration
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/xdg/user-dirs.conf
     regexp: "^enabled=True"
     line: enabled=False

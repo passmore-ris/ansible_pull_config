@@ -1,12 +1,12 @@
 - name: Make backup of file preventing installation of snapd
-  copy:
+  ansible.builtin.copy:
     remote_src: true
     src: /etc/apt/preferences.d/nosnap.pref
     dest: /etc/apt/preferences.d/nosnap.backup
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Remove file preventing installation of snapd
-  file:
+  ansible.builtin.file:
     path: /etc/apt/preferences.d/nosnap.pref
     state: absent
-  ignore_errors: yes
+  ignore_errors: true

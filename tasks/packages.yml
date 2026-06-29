@@ -32,9 +32,10 @@
       - tmux
       - libreoffice-l10n-ru # Russian language pack for LibreOffice
 
+# Preferable to install via debian repositories, but snap can be used as a fallback.
 - name: Install packages with snap
   community.general.snap:
     name:
-      - turbowarp-desktop
+      - turbowarp-desktop     # Turbowarp not able to be installed via its official repository, but snap installation works.
     classic: true
     state: present

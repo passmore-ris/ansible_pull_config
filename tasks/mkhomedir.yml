@@ -1,5 +1,5 @@
 - name: Edit pam-configs/mkhomedir file
-  copy:
+  ansible.builtin.copy:
     src: files/pam_mkhomedir
     dest: /usr/share/pam-configs/mkhomedir
     owner: root
@@ -7,9 +7,9 @@
     mode: '0644'
 
 - name: Enable the mkhomedir profile using pam-auth-update
-  command: sudo pam-auth-update --enable mkhomedir
+  ansible.builtin.command: sudo pam-auth-update --enable mkhomedir
 
 - name: Restart sssd
-  service:
+  ansible.builtin.service:
     name: sssd
     state: restarted

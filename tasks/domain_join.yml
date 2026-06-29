@@ -1,24 +1,24 @@
 # Ubuntu systems need to have the universe and multiverse repositories enabled. Linux Mint systems should have them enabled by default.
 - name: Get current hostname
-  command: hostname -s
+  ansible.builtin.command: hostname -s
   register: current_hostname
   changed_when: false
 
 - name: Set new hostname with domain
-  hostname:
+  ansible.builtin.hostname:
     name: "{{ current_hostname.stdout }}.{{ domain }}"
   when: ansible_facts['distribution'] != 'MOS'
   changed_when: false
 
 # MOS OS is special and needs its own little hostname module
 - name: Set new hostname with domain (MOS.OS)
-  command: hostnamectl set-hostname "{{ current_hostname.stdout }}.{{ domain }}"
+  ansible.builtin.command: hostnamectl set-hostname "{{ current_hostname.stdout }}.{{ domain }}"
   become: true
   when: ansible_facts['distribution'] == 'MOS'
   changed_when: false
 
 - name: Modify resolved info
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/systemd/resolved.conf
     regexp: '^#DNS='
     line: DNS={{ dc_ip }}
@@ -27,13 +27,13 @@
     mode: '0644'
 
 - name: Restart resolved
-  service:
+  ansible.builtin.service:
     name: systemd-resolved
     state: restarted
   changed_when: false
 
 - name: Install dependencies
-  apt:
+  ansible.builtin.apt:
     name:
       - realmd
       - libnss-sss
@@ -48,7 +48,7 @@
   when: ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
 
 - name: Install dependencies for MOS
-  dnf:
+  ansible.builtin.dnf:
     name:
       - realmd
       - sssd
@@ -59,33 +59,33 @@
       - packagekit
   when: ansible_facts['distribution'] == 'MOS'
 
-#- name: install expect using pip
+# - name: install expect using pip
 #  pip:
 #    name: pexpect
 
 - name: Check domain membership
-  command: realm list
+  ansible.builtin.command: realm list
   register: realm_status
   changed_when: false
 
 - name: Join host to domain
-  expect:
+  ansible.builtin.expect:
     # The variables domain_admin_username and domain_admin_password
     # must be specified in the --extra-vars argument in the original
     # ansible-pull command.
     command: sudo realm join -U "{{ domain_admin_username }}" "{{ domain }}"
-    responses: 
+    responses:
       (?i)password*: "{{ domain_admin_password }}"
   when: "domain not in realm_status.stdout"
 
 - name: Allow all users to log in
-  command: sudo realm permit --all
+  ansible.builtin.command: sudo realm permit --all
   changed_when: false
 
 - name: Grant domain admins sudo access
-  copy:
+  ansible.builtin.copy:
     src: files/sudoers_domain_admins
     dest: /etc/sudoers.d/domain_admins
     owner: root
     group: root
-    mode: 0440
+    mode: '0440'

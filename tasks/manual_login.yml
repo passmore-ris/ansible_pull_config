@@ -1,5 +1,5 @@
 - name: Turn on manual login for Linux Mint workstations
-  copy:
+  anisble.builtin.copy:
     src: files/lightdm.conf
     dest: /etc/lightdm/lightdm.conf
     owner: root
@@ -8,10 +8,17 @@
   when: ansible_facts['distribution'] == 'Linux Mint'
 
 - name: Turn on manual login for MOS workstations
-  copy:
+  ansible.builtin.copy:
     src: files/uid.conf
     dest: /etc/sddm.conf.d/uid.conf
     owner: root
     group: root
     mode: '0664'
   when: ansible_facts['distribution'] == 'MOS'
+
+- name: Turn on manual login for Debian workstations
+  ansible.builtin.lineinfile:
+    path: /etc/gdm3/greeter.dconf-defaults
+    regexp: '^#?disable-user-list=false'
+    line: 'disable-user-list=true'
+  when: ansible_facts['distribution'] == 'Debian'

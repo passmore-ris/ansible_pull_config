@@ -1,10 +1,10 @@
-- name: install cronie # MOS doesn't have it for some reason
-  package:
+- name: Install cronie # MOS doesn't have it for some reason
+  ansible.builtin.package:
     name: cronie
   when: ansible_facts['distribution'] == 'MOS'
 
-- name: install cron job (ansible-pull)
-  cron:
+- name: Install cron job (ansible-pull)
+  ansible.builtin.cron:
     user: ansible
     name: "ansible provision"
     minute: "*/10"

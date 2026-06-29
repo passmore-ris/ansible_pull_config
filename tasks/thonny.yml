@@ -1,11 +1,12 @@
 - name: Remove flag from Thonny
-  copy:
+  ansible.builtin.copy:
     src: files/thonny_workbench.py
     dest: /usr/lib/python3/dist-packages/thonny/workbench.py
     owner: root
+    mode: '0440'
 
 - name: Make workbench immutable
-  file:
+  ansible.builtin.file:
     path: /usr/lib/python3/dist-packages/thonny/workbench.py
     attributes: +i
   register: copy_result
