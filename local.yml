@@ -1,4 +1,5 @@
-- hosts: localhost
+- name: Execute ansible-pull
+  hosts: localhost
   connection: local
   become: true
   vars:
@@ -7,47 +8,55 @@
 
   pre_tasks:
     - name: Update apt repositories
-      apt:
-        update_cache: yes
-      changed_when: False
+      ansible.builtin.apt:
+        update_cache: true
+      changed_when: false
       when: ansible_os_family == "Debian"
     - name: Update dnf repositories
-      dnf:
-        update_cache: yes
+      ansible.builtin.dnf:
+        update_cache: true
       changed_when: false
       when: ansible_os_family == "RedHat" or ansible_facts['distribution'] == 'MOS'
 
   tasks:
-    # Change repositories to Yandex mirrors
-    #- include_tasks: tasks/repositories.yml
-    # Configure snap installer
-    - include_tasks: tasks/snapd.yml
+    - name: Change repositories to Yandex mirrors
+      ansible.builtin.include_tasks: tasks/repositories.yml
+    - name: Configure snap installer
+      ansible.builtin.include_tasks: tasks/snapd.yml
       when: ansible_facts['distribution'] == 'Linux Mint'
     # Install packages
-    - include_tasks: tasks/packages.yml
-    # Edit packages
-    - include_tasks: tasks/thonny.yml # Thonny needs to be...edited a little bit. Removes the flag.
-      when: ansible_facts['distribution'] != 'MOS' # Not needed on the MOS OS
-    # Make users, including ansible user for automatic pulling
-    - include_tasks: tasks/users.yml
-    # Set cron jobs
-    - include_tasks: tasks/cron.yml
-    # Join domain
-    - include_tasks: tasks/domain_join.yml
-    # Enable automatic creation of home directories for Debian-based systems.
-    # This is automatically enabled in RedHat-based systems.
-    - include_tasks: tasks/mkhomedir.yml
-      when: ansible_os_family == 'Debian'
-    # Turn on manual login, so users can type in their domain usernames.
-    - include_tasks: tasks/manual_login.yml
-    # Set the user's home directory on the file server to mount at ~/MySharedFolders
-    - include_tasks: tasks/mount.yml
-    # Configure the automatic setup of home profile for new users
-    - include_tasks: tasks/home_profile.yml
-    # Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
-    - include_tasks: tasks/veyon.yml
-    # Configure new profiles with /etc/skel
-    - include_tasks: tasks/skel.yml
-    # Delete KIOSK from MOS devices. This, along with kiosk.yml, can be deleted after a while.
-    - include_tasks: tasks/kiosk.yml
-      when: ansible_facts['distribution'] == 'MOS'
+    - name: Install packages
+      ansible.builtin.include_tasks: tasks/packages.yml
+    # # Edit packages
+    # - name: Edit packages
+    #   ansible.builtin.include_tasks: tasks/thonny.yml # Thonny needs to be...edited a little bit. Removes the flag.
+    #   when: ansible_facts['distribution'] != 'MOS' # Not needed on the MOS OS
+    # # Make users, including ansible user for automatic pulling
+    # - name: Make users
+    #   ansible.builtin.include_tasks: tasks/users.yml
+    # # Set cron jobs
+    # - name: Set cron jobs
+    #   ansible.builtin.include_tasks: tasks/cron.yml
+    # # Join domain
+    # - name: Join domain
+    #   ansible.builtin.include_tasks: tasks/domain_join.yml
+    # # Enable automatic creation of home directories for Debian-based systems.
+    # # This is automatically enabled in RedHat-based systems.
+    # - name: Enable automatic home directory creation
+    #   ansible.builtin.include_tasks: tasks/mkhomedir.yml
+    #   when: ansible_os_family == 'Debian'
+    # # Turn on manual login, so users can type in their domain usernames.
+    # - name: Turn on manual login
+    #   ansible.builtin.include_tasks: tasks/manual_login.yml
+    # # Set the user's home directory on the file server to mount at ~/MySharedFolders
+    # - name: Set home directory mount
+    #   ansible.builtin.include_tasks: tasks/mount.yml
+    # # Configure the automatic setup of home profile for new users
+    # - name: Configure home profile
+    #   ansible.builtin.include_tasks: tasks/home_profile.yml
+    # # Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
+    # - name: Install Veyon
+    #   ansible.builtin.include_tasks: tasks/veyon.yml
+    # # Configure new profiles with /etc/skel
+    # - name: Configure skel profiles
+    #   ansible.builtin.include_tasks: tasks/skel.yml

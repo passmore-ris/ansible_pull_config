@@ -1,0 +1,13 @@
+- [x] Change repositories to Yandex mirrors
+- [ ] Configure snap installer
+- [ ] Install packages
+- [ ] Edit Thonny
+- [ ] Make ansible user 
+- [ ] Set cron jobs for automatic pulling
+- [ ] Install freeIPA client
+- [ ] Enable automatic creation of home directories for Debian-based systems.
+- [ ] Turn on manual login, so users can type in their domain usernames.
+- [ ] Set the user's home directory on the file server to automount
+- [ ] Configure the automatic setup of home profile for new users
+- [ ] Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
+- [ ] Configure new profiles with /etc/skel
