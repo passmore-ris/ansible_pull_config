@@ -13,10 +13,9 @@
     name: turbowarp
     types: deb
     uris: https://releases.turbowarp.org/deb
-    suites: '{{ ansible_distribution_release }}'
-    components:
-      - stable/main
-      - amd64
+    suites:
+      - stable
+      - main
     architectures: amd64
     signed_by: https://desktop.turbowarp.org/release-signing-key.gpg
 
