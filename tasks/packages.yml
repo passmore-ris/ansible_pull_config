@@ -15,8 +15,8 @@
     uris: https://releases.turbowarp.org/deb
     suites: '{{ ansible_distribution_release }}'
     components:
-      - stable
-      - main
+      - stable/main
+      - amd64
     architectures: amd64
     signed_by: https://desktop.turbowarp.org/release-signing-key.gpg
 
