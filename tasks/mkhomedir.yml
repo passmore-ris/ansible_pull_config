@@ -13,3 +13,4 @@
   ansible.builtin.service:
     name: sssd
     state: restarted
+  when: "'sssd' in ansible_facts.packages"
