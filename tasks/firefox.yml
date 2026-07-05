@@ -1,5 +1,5 @@
 - name: Create policies.json file
-  ansibile.builtin.file:
+  ansible.builtin.file:
     path: /etc/firefox/policies/policies.json
 
 - name: Copy firefox policies to /etc/firefox/policies/policies.json
