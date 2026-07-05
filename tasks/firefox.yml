@@ -1,0 +1,7 @@
+- name: Copy firefox policies to /etc/firefox/policies/policies.json
+  ansible.builtin.copy:
+    src: files/firefox_policies.json
+    dest: /etc/firefox/policies/policies.json
+    owner: root
+    group: root
+    mode: '0440'

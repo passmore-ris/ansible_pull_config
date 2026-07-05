@@ -1,0 +1,91 @@
+{
+  "policies": {
+    "BlockAboutConfig": true,
+    "BlockAboutProfiles": true,
+    "Bookmarks": [
+      {
+        "Title": "Eljur",
+        "URL": "https://rischool.eljur.ru/authorize",
+        "Placement": "toolbar"
+      },
+      {
+        "Title": "Google Classroom",
+        "URL": "https://classroom.google.com",
+        "Placement": "toolbar"
+      },
+      {
+        "Title": "Gmail",
+        "URL": "https://mail.google.com",
+        "Placement": "toolbar"
+      },
+      {
+        "Title": "Google Drive",
+        "URL": "https://drive.google.com",
+        "Placement": "toolbar"
+      }
+    ],
+    "DisablePrivateBrowsing": true,
+    "DisableSafeMode": true,
+    "DisablePasswordReveal": true,
+    "DisableSecurityBypass": {
+      "InvalidCertificate": true,
+      "SafeBrowsing": true
+    },
+    "DisplayBookmarksToolbar": "always",
+    "DNSOverHTTPS": {
+      "Enabled": false,
+      "Locked": true
+    },
+    "ExtensionSettings": {
+      "*": {
+        "blocked_install_message": "Extension installations are managed by the school IT Department.",
+        "installation_mode": "blocked",
+        "allowed_types": ["extension"]
+      },
+      "uBlock0@raymondhill.net": {
+        "installation_mode": "force_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
+      }
+    },
+    "FirefoxHome": {
+      "Search": true,
+      "TopSites": true,
+      "SponsoredTopSites": false,
+      "Highlights": false,
+      "Pocket": false,
+      "SponsoredPocket": false,
+      "Snippets": false,
+      "Weather": false,
+      "Locked": true
+    },
+    "FirefoxSuggest": {
+      "WebSuggestions": true,
+      "SponsoredSuggestions": false,
+      "ImproveSuggest": false,
+      "Locked": true
+    },
+    "GenerativeAI": {
+      "Enabled": false,
+      "Chatbot": false,
+      "LinkPreviews": false,
+      "TabGroups": false,
+      "Locked": true
+    },
+    "HttpsOnlyMode": "enabled",
+    "PasswordManagerEnabled": false,
+    "PopupBlocking": {
+      "Default": true,
+      "Locked": true
+    },
+    "StartDownloadsInTempDirectory": true,
+    "UserMessaging": {
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "UrlbarInterventions": false,
+      "SkipOnboarding": true,
+      "MoreFromMozilla": false,
+      "FirefoxLabs": false,
+      "Locked": true
+    }
+  }
+}
