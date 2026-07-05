@@ -37,5 +37,6 @@
   community.general.snap:
     name:
       - turbowarp-desktop     # Turbowarp not able to be installed via its official repository, but snap installation works.
+      - onlyoffice-desktopeditors
     classic: true
     state: present

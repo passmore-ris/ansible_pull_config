@@ -11,3 +11,4 @@
 - [x] Configure the automatic setup of home profile for new users
 - [ ] Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
 - [ ] Configure new profiles with /etc/skel
+- [ ] Make sure a virtual environment is configured in /etc/skel
