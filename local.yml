@@ -54,6 +54,8 @@
     # Configure the automatic setup of home profile for new users
     - name: Configure home profile
       ansible.builtin.include_tasks: tasks/home_profile.yml
+    - name: Set Firefox policy
+      ansible.builtin.include_tasks: tasks/firefox.yml
     # # Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
     # - name: Install Veyon
     #   ansible.builtin.include_tasks: tasks/veyon.yml
