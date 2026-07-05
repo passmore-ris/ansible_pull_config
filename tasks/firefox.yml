@@ -1,12 +1,7 @@
-- name: Create policies directory
-  ansible.builtin.file:
-    path: /etc/firefox/policies
-    state: directory
-
 - name: Copy firefox policies to /etc/firefox/policies/policies.json
   ansible.builtin.copy:
     src: files/firefox_policies.json
-    dest: /etc/firefox/policies/policies.json
+    dest: /usr/lib/firefox-esr/distribution/policies.json
     owner: root
     group: root
     mode: '0440'
