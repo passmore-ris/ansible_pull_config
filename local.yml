@@ -58,8 +58,8 @@
     - name: Set Firefox policy
       ansible.builtin.include_tasks: tasks/firefox.yml
      # Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
-     - name: Install Veyon
-       ansible.builtin.include_tasks: tasks/veyon.yml
+    - name: Install Veyon
+      ansible.builtin.include_tasks: tasks/veyon.yml
     # # Configure new profiles with /etc/skel
     # - name: Configure skel profiles
     #   ansible.builtin.include_tasks: tasks/skel.yml
