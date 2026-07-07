@@ -31,6 +31,7 @@
       - sublime-text
       - tmux
       - libreoffice-l10n-ru # Russian language pack for LibreOffice
+    update_cache: true
 
 # Preferable to install via debian repositories, but snap can be used as a fallback.
 - name: Install packages with snap
