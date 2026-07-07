@@ -1,0 +1,191 @@
+{
+    "AccessControl": {
+        "AccessControlRulesProcessingEnabled": false,
+        "AccessRestrictedToUserGroups": false
+    },
+    "BuiltinDirectory": {
+        "NetworkObjects": {
+            "JsonStoreArray": [
+                {
+                    "Name": "Shanghai",
+                    "Type": 2,
+                    "Uid": "{62faf2bd-a432-4c6d-afe0-be1982c36e11}"
+                }
+            ]
+        }
+    },
+    "Core": {
+        "ApplicationVersion": 8,
+        "InstallationID": "8416b359-4a4a-4412-a4d7-77e844b256a1",
+        "PluginVersions": {
+            "JsonStoreObject": {
+                "{14bacaaa-ebe5-449c-b881-5b382f952571}": "1.1",
+                "{1b08265b-348f-4978-acaa-45d4f6b90bd9}": "1.1",
+                "{2917cdeb-ac13-4099-8715-20368254a367}": "1.1",
+                "{2ad98ccb-e9a5-43ef-8c4c-876ac5efbcb1}": "1.1",
+                "{387a0c43-1355-4ff6-9e1f-d098e9ce5127}": "1.1",
+                "{39d7a07f-94db-4912-aa1a-c4df8aee3879}": "1.1",
+                "{4122e8ca-b617-4e36-b851-8e050ed2d82e}": "1.2",
+                "{4790bad8-4c56-40d5-8361-099a68f0c24b}": "1.1",
+                "{63928a8a-4c51-4bfd-888e-9e13c6f3907a}": "1.1",
+                "{67dfc1c1-8f37-4539-a298-16e74e34fd8b}": "1.1",
+                "{6f0a491e-c1c6-4338-8244-f823b0bf8670}": "1.2",
+                "{80580500-2e59-4297-9e35-e53959b028cd}": "1.2",
+                "{8ae6668b-9c12-4b29-9bfc-ff89f6604164}": "1.1",
+                "{a54ee018-42bf-4569-90c7-0d8470125ccf}": "2.0",
+                "{d4bb9c42-9eef-4ecb-8dd5-dfd84b355481}": "1.0",
+                "{e11bee03-b99c-465c-bf90-7e5339b83f6b}": "1.0",
+                "{ee322521-f4fb-482d-b082-82a79003afa7}": "1.1",
+                "{f626f759-7691-45c0-bd4a-37171d98d219}": "1.0"
+            }
+        }
+    },
+    "DesktopServices": {
+        "PredefinedApplications": {
+            "JsonStoreArray": [
+                {
+                    "Name": "Audacity",
+                    "Path": "/usr/bin/audacity",
+                    "Type": 1,
+                    "Uid": "{130a6644-927c-4efa-b0b7-4b46999bfa80}"
+                },
+                {
+                    "Name": "Blender",
+                    "Path": "/usr/bin/blender",
+                    "Type": 1,
+                    "Uid": "{3682ca0b-2bc1-42bc-a574-fb65f01d13e5}"
+                },
+                {
+                    "Name": "Dia",
+                    "Path": "/usr/bin/dia",
+                    "Type": 1,
+                    "Uid": "{db58bf03-8b48-47f2-8f70-ad87899e3b71}"
+                },
+                {
+                    "Name": "Geany",
+                    "Path": "/usr/bin/geany",
+                    "Type": 1,
+                    "Uid": "{6617bed5-e38e-44a0-9ad8-e0d4026d47e0}"
+                },
+                {
+                    "Name": "GIMP",
+                    "Path": "/usr/bin/gimp",
+                    "Type": 1,
+                    "Uid": "{8a4f41c1-015a-43a3-9397-c343ee506e04}"
+                },
+                {
+                    "Name": "Inkscape",
+                    "Path": "/usr/bin/inkscape",
+                    "Type": 1,
+                    "Uid": "{da33323c-aedc-4065-aadc-bd222fe549f1}"
+                },
+                {
+                    "Name": "OnlyOffice",
+                    "Path": "/snap/bin/onlyoffice-desktopeditors",
+                    "Type": 1,
+                    "Uid": "{32808b24-16fc-4b0e-88b8-3ebb65f8fd45}"
+                },
+                {
+                    "Name": "Sublime",
+                    "Path": "/usr/bin/subl",
+                    "Type": 1,
+                    "Uid": "{0233e525-5ebd-4a77-8100-801057a0e3b4}"
+                },
+                {
+                    "Name": "Thonny",
+                    "Path": "/usr/bin/Thonny",
+                    "Type": 1,
+                    "Uid": "{75798563-b2a4-4e52-b58a-d0e02b363c3d}"
+                },
+                {
+                    "Name": "Turbowarp",
+                    "Path": "/snap/bin/turbowarp-desktop",
+                    "Type": 1,
+                    "Uid": "{22c192a3-4b34-4e33-89bf-c2112c55ef02}"
+                }
+            ]
+        },
+        "PredefinedWebsites": {
+            "JsonStoreArray": [
+                {
+                    "Name": "Google Classroom",
+                    "Path": "https://classroom.google.com",
+                    "Type": 2,
+                    "Uid": "{4687cd66-33be-4e5d-8631-c409c3a289d1}"
+                },
+                {
+                    "Name": "Raspberry Pi Projects",
+                    "Path": "https://projects.raspberrypi.org/en",
+                    "Type": 2,
+                    "Uid": "{e20076f6-d139-480a-882a-33a33673aa5a}"
+                }
+            ]
+        }
+    },
+    "FileTransfer": {
+        "CollectedFilesDestinationDirectory": "/home/$USER",
+        "DefaultSourceDirectory": "/home/$USER/",
+        "DestinationDirectory": "/home/$USER/veyon",
+        "FilesToCollectSourceDirectory": "/home/$USER/veyon"
+    },
+    "LDAP": {
+        "BaseDN": "dc=ipa,dc=rischool,dc=ru",
+        "BindDN": "uid=veyonreader,cn=users,cn=accounts,dc=ipa,dc=rischool,dc=ru",
+        "BindPassword": "37c26dcc95c1f884a3754c78b91df8c64f421656bcbdb28c43a44942df04ed8fd45d841333bc16967d68df4bc0fb0ef35c577262ffee8568632e0091e385ff79a6e6546f2254506ea4f492a402e9639c405873dd3516a8a97933ed5188e444a993f6ed82c5be01bdec0a23388a03c5d63ef999d5e5380a3438b5f65fd8500ae796a9b37e043f27ec1cf4ca91a6a25fe76cf3df93ed34fa6a9b4a158e1d08e890a466626e5ef45d95a67ef6ab97d4cfb43c995f16868a84187424bbf31cab35283600151d5009a1ee9d31d11a51a2980cf1e90da4be07aacb46988609ed8a17b45e67bfc3334ef646a92c9f991e6af71432521ba530af772a1d7fc054aadb2082c570a7cfb0f0fd03f8d103817fd9ff946d82eb96f9ac690dae72d2745eae01ca4ad7b3dcccfff5713de16341ad2dd96b09d26a6661708410fa0b0bfcf234cc7046c3dbc077d6fe107f502a257ff6d0730c093444216d8ae616c15055af776c117de20350b67d37bb3b85fbe883400ef84e345aeb1d2b5cc5ae3f47b13c8c4db9d87c85f7c8dfa2b47c59df3d2be9a593ced2dcc8a04d9d653daee81604910553b264f8a9b22110f152f4d81d7eb472be454b8b09e76627580811cb8a57f05049332e2cb15394b91f040de9debf12bdd8e7292ad9a4b3755ea7b63f5e724b5bb3ea3d54ad96cb62dcfed424d8fd203f7901af9be2284a2e58a3c346493db427e6",
+        "ComputerGroupTree": "cn=hostgroups,cn=accounts",
+        "ComputerGroupsFilter": "",
+        "ComputerHostNameAsFQDN": "true",
+        "ComputerHostNameAttribute": "fqdn",
+        "ComputerLocationAttribute": "nsHostLocation",
+        "ComputerLocationsByAttribute": "false",
+        "ComputerLocationsByContainer": "false",
+        "ComputerMacAddressAttribute": "macAddress",
+        "ComputerTree": "cn=computers,cn=accounts",
+        "ConnectionSecurity": "1",
+        "GroupMemberAttribute": "member",
+        "GroupTree": "cn=groups,cn=accounts",
+        "LocationNameAttribute": "",
+        "RecursiveSearchOperations": "false",
+        "ServerHost": "dc1.ipa.rischool.ru",
+        "TLSCACertificateFile": "/etc/ipa/ca.crt",
+        "TLSVerifyMode": "2",
+        "UseBindCredentials": "true",
+        "UserLoginNameAttribute": "uid",
+        "UserTree": "cn=users,cn=accounts"
+    },
+    "Logging": {
+        "LogFileDirectory": "/tmp"
+    },
+    "Master": {
+        "AccessControlForMasterEnabled": false,
+        "AllowAddingHiddenLocations": "false",
+        "AutoAdjustMonitoringIconSize": "false",
+        "AutoOpenComputerSelectPanel": "false",
+        "AutoSelectCurrentLocation": "false",
+        "ConfirmUnsafeActions": "false",
+        "HideComputerFilter": "false",
+        "HideEmptyLocations": "false",
+        "HideLocalComputer": "false",
+        "ShowCurrentLocationOnly": "false"
+    },
+    "Network": {
+        "FirewallExceptionEnabled": "1",
+        "VeyonServerPort": "11100"
+    },
+    "NetworkObjectDirectory": {
+        "Plugin": "6f0a491e-c1c6-4338-8244-f823b0bf8670"
+    },
+    "UI": {
+        "ColorScheme": 2
+    },
+    "UserGroups": {
+        "Backend": "6f0a491e-c1c6-4338-8244-f823b0bf8670",
+        "UseDomainUserGroups": "false"
+    },
+    "VncServer": {
+        "Plugin": "00000000-0000-0000-0000-000000000000"
+    },
+    "Windows": {
+        "SoftwareSASEnabled": "1"
+    }
+}

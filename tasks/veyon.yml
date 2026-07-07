@@ -18,18 +18,18 @@
       - veyon-service
     state: present
 
-#- name: Transfer Veyon configuration
-#  copy:
-#    src: files/veyon_config.json
-#    dest: /etc
-#    owner: root
-#    group: root
-#    mode: '0600'
-#
-#- name: Import Veyon configuration
-#  command: sudo veyon-cli config import /etc/veyon_config.json
-#  changed_when: false
-#
+- name: Transfer Veyon configuration
+  copy:
+    src: files/freeipa_veyon_config.json
+    dest: /etc
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Import Veyon configuration
+  command: sudo veyon-cli config import /etc/veyon_config.json
+  changed_when: false
+
 ## Need to make it so that only domain admins and teachers can access it.
 #- name: Prevent pupils from executing Veyon-Master
 #  ansible.posix.acl:
