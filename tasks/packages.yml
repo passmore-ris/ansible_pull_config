@@ -12,7 +12,7 @@
 # Install packages for pupil workstations
 
 - name: Install packages for pupil workstations
-  when: ansible_facts['ansible_local']['role']['name'] | default('pupil') == 'pupil'
+  when: ansible_local.workstation.role.name | default('pupil') == 'pupil'
   block:
     - name: Add Sublime repository
       ansible.builtin.deb822_repository:
@@ -50,7 +50,7 @@
 
 # Install packages for staff workstations
 - name: Install packages for staff workstations
-  when: ansible_facts['ansible_local']['role']['name'] | default('pupil') == 'staff'
+  when: ansible_local.workstation.role.name | default('pupil') == 'staff'
   block:
     - name: Add Google Chrome deb repository
       ansible.builtin.deb822_repository:
