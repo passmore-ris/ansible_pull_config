@@ -9,11 +9,11 @@
 # Rocky Repositories
 - name: Set Rocky Linux repositories to Yandex mirrors
   ansible.builtin.unarchive:
-    src: files/repositories/rocky-linux-yandex-mirrors-main.zip
+    src: files/repositories/rocky-linux-yandex-mirrors-main.tar.gz
     dest: /etc/yum.repos.d/
     mode: '0644'
     extra_opts:
-      - '-j'
+      - '--strip-components=1'
   when: ansible_facts['distribution'] == 'Rocky'
 
 - name: Update cache
