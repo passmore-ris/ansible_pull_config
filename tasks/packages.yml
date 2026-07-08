@@ -77,7 +77,6 @@
       ansible.builtin.package:
         name:
           - google-chrome-stable
-          - pdfarranger
           - vlc
         update_cache: true
 
@@ -100,5 +99,6 @@
         name:
           - onlyoffice-desktopeditors
           - obsidian
+          - pdfarranger
         classic: true
         state: present
