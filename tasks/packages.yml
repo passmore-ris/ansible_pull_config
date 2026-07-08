@@ -87,12 +87,12 @@
         state: present
       when: ansible_os_family == 'Debian'
 
-    - name: Install dnf-specific packages
-      ansible.builtin.dnf:
-        name:
-          - libreoffice-langpack-ru # Russian language pack for LibreOffice
-        state: present
-      when: ansible_os_family == 'RedHat'
+#    - name: Install dnf-specific packages
+#      ansible.builtin.dnf:
+#        name:
+#          - 
+#        state: present
+#      when: ansible_os_family == 'RedHat'
 
     - name: Install snap packages
       community.general.snap:
