@@ -32,6 +32,14 @@
 
     - name: Start snap service on RedHat-based systems
       ansible.builtin.systemd:
-        name: snapd
+        name: snapd.socket
         state: started
         enabled: true
+
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: /var/lib/snapd/snap
+        dest: /snap
+        owner: root
+        group: root
+        state: link
