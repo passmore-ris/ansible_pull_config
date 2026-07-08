@@ -5,39 +5,100 @@
       - debian-archive-keyring
       - apt-transport-https
       - curl
+      - ca-certificates
     update_cache: true
   when: ansible_os_family == 'Debian'
 
-- name: Add Sublime repository
-  ansible.builtin.deb822_repository:
-    name: sublime
-    types: deb
-    uris: https://download.sublimetext.com
-    suites: apt/stable/
-    signed_by: https://download.sublimetext.com/sublimehq-pub.gpg
+# Install packages for pupil workstations
 
-- name: Install apt packages
-  ansible.builtin.package:
-    name:
-      - blender
-      - snapd
-      - inkscape
-      - geany
-      - thonny # Workbench.py must be changed. See 'thonny.yml'
-      - gimp
-      - audacity
-      - dia
-      - sqlitebrowser
-      - sublime-text
-      - tmux
-      - libreoffice-l10n-ru # Russian language pack for LibreOffice
-    update_cache: true
+- name: Install packages for pupil workstations
+  when: ansible_facts['ansible_local']['role']['name'] | default('pupil') == 'pupil'
+  block:
+    - name: Add Sublime repository
+      ansible.builtin.deb822_repository:
+        name: sublime
+        types: deb
+        uris: https://download.sublimetext.com
+        suites: apt/stable/
+        signed_by: https://download.sublimetext.com/sublimehq-pub.gpg
+      when: ansible_os_family == 'Debian'
 
-# Preferable to install via debian repositories, but snap can be used as a fallback.
-- name: Install packages with snap
-  community.general.snap:
-    name:
-      - turbowarp-desktop     # Turbowarp not able to be installed via its official repository, but snap installation works.
-      - onlyoffice-desktopeditors
-    classic: true
-    state: present
+    - name: Install apt packages
+      ansible.builtin.package:
+        name:
+          - blender
+          - inkscape
+          - geany
+          - thonny # Workbench.py must be changed. See 'thonny.yml'
+          - gimp
+          - audacity
+          - dia
+          - sqlitebrowser
+          - sublime-text
+          - tmux
+          - libreoffice-l10n-ru # Russian language pack for LibreOffice
+        update_cache: true
+
+    # Preferable to install via debian repositories, but snap can be used as a fallback.
+    - name: Install packages with snap
+      community.general.snap:
+        name:
+          - turbowarp-desktop     # Turbowarp not able to be installed via its official repository, but snap installation works.
+          - onlyoffice-desktopeditors
+        classic: true
+        state: present
+
+# Install packages for staff workstations
+- name: Install packages for staff workstations
+  when: ansible_facts['ansible_local']['role']['name'] | default('pupil') == 'staff'
+  block:
+    - name: Add Google Chrome deb repository
+      ansible.builtin.deb822_repository:
+        name: google-chrome
+        types: deb
+        uris: https://dl.google.com/linux/chrome-stable/deb/
+        suites: stable
+        components: main
+        architectures: amd64
+        signed_by: https://dl.google.com/linux/linux_signing_key.pub
+      when: ansible_os_family == 'Debian'
+
+    - name: Add Google Chrome yum repository
+      ansible.builtin.yum_repository:
+        name: google-chrome
+        description: Google Chrome Repository
+        baseurl: https://dl.google.com/linux/chrome/rpm/stable/x86_64
+        gpgcheck: true
+        gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+        enabled: true
+      when: ansible_os_family == 'RedHat'
+
+    - name: Install general packages
+      ansible.builtin.package:
+        name:
+          - google-chrome-stable
+          - pdfarranger
+          - vlc
+        update_cache: true
+
+    - name: Install apt-specific packages
+      ansible.builtin.apt:
+        name:
+          - libreoffice-l10n-ru # Russian language pack for LibreOffice
+        state: present
+      when: ansible_os_family == 'Debian'
+
+    - name: Install dnf-specific packages
+      ansible.builtin.dnf:
+        name:
+          - libreoffice-langpack-ru # Russian language pack for LibreOffice
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+    - name: Install snap packages
+      community.general.snap:
+        name:
+          - onlyoffice-desktopeditors
+          - obsidian
+        classic: true
+        state: present

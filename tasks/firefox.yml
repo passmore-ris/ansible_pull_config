@@ -1,7 +1,17 @@
-- name: Copy firefox policies to /etc/firefox/policies/policies.json
-  ansible.builtin.copy:
-    src: files/firefox_policies.json
-    dest: /usr/lib/firefox-esr/distribution/policies.json
-    owner: root
-    group: root
-    mode: '0644'
+- name: Set Firefox policy
+  block:
+    - name: Copy firefox policies to /usr/lib/firefox-esr/distribution/policies.json
+      ansible.builtin.copy:
+        src: files/firefox_policies.json
+        dest: /usr/lib/firefox-esr/distribution/policies.json
+        owner: root
+        group: root
+        mode: '0644'
+  rescue:
+    - name: Copy firefox policies to /usr/lib/firefox/distribution/policies.json
+      ansible.builtin.copy:
+        src: files/firefox_policies.json
+        dest: /usr/lib/firefox/distribution/policies.json
+        owner: root
+        group: root
+        mode: '0644'

@@ -4,11 +4,15 @@
 - [x] Edit Thonny
 - [x] Make ansible user 
 - [x] Set cron jobs for automatic pulling
-- [ ] Install freeIPA client
 - [x] Enable automatic creation of home directories for Debian-based systems.
 - [x] Turn on manual login, so users can type in their domain usernames.
-- [ ] Set the user's home directory on the file server to automount
+- [x] Set the user's home directory on the file server to automount
 - [x] Configure the automatic setup of home profile for new users
-- [ ] Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
+- [x] Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
 - [ ] Configure new profiles with /etc/skel
-- [ ] Make sure a virtual environment is configured in /etc/skel
+
+- [ ] Include facts in `/etc/ansible/facts.d/workstation.fact` in workstation. Change to pupil if necessary.
+```ini
+[role]
+name=staff
+```

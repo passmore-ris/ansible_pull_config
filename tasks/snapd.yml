@@ -1,12 +1,37 @@
-- name: Make backup of file preventing installation of snapd
-  ansible.builtin.copy:
-    remote_src: true
-    src: /etc/apt/preferences.d/nosnap.pref
-    dest: /etc/apt/preferences.d/nosnap.backup
-  ignore_errors: true
+- name: Enable snap for Linux Mint
+  when: ansible_facts['distribution'] == 'Linux Mint'
+  block:
+    - name: Make backup of file preventing installation of snapd
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/apt/preferences.d/nosnap.pref
+        dest: /etc/apt/preferences.d/nosnap.backup
+        owner: root
+        group: root
+        mode: '0444'
+      ignore_errors: true
 
-- name: Remove file preventing installation of snapd
-  ansible.builtin.file:
-    path: /etc/apt/preferences.d/nosnap.pref
-    state: absent
-  ignore_errors: true
+    - name: Remove file preventing installation of snapd
+      ansible.builtin.file:
+        path: /etc/apt/preferences.d/nosnap.pref
+        state: absent
+      ignore_errors: true
+
+    - name: Install snap
+      ansible.builtin.apt:
+        name: snapd
+        state: present
+
+- name: Enable snap for RedHat-based distros
+  when: ansible_os_family == 'RedHat'
+  block:
+    - name: Install snap
+      ansible.builtin.dnf:
+        name: snapd
+        state: present
+
+    - name: Start snap service on RedHat-based systems
+      ansible.builtin.systemd:
+        name: snapd
+        state: started
+        enabled: true

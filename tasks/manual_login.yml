@@ -22,3 +22,41 @@
     regexp: '^#?disable-user-list=false'
     line: 'disable-user-list=true'
   when: ansible_facts['distribution'] == 'Debian'
+
+- name: Turn on manual login for RedHat Workstations
+  when: ansible_os_family == 'RedHat'
+  block:
+    - name: Create /etc/dconf/profile/gdm file
+      ansible.builtin.file:
+        path: /etc/dconf/profile/gdm
+        state: touch
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Add content to /etc/dconf/profile/gdm
+      ansible.builtin.blockinfile:
+        path: /etc/dconf/profile/gdm
+        block: |
+          user-db:user
+          system-db:gdm
+          file-db:/usr/share/gdm/greeter-dconf-defaults
+
+    - name: Create /etc/dconf/db/gdm.d/00-login-screen file
+      ansible.builtin.file:
+        path: /etc/dconf/db/gdm.d/00-login-screen
+        state: touch
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Add content to /etc/dconf/db/gdm.d/00-login-screen
+      ansible.builtin.blockinfile:
+        path: /etc/dconf/db/gdm.d/00-login-screen
+        block: |
+          [org/gnome/login-screen]
+          disable-user-list=true
+      notify: Update dconf database
+
+    - name: Update dconf database
+      ansible.builtin.command: dconf
+      changed_when: false

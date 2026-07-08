@@ -2,9 +2,8 @@
   hosts: localhost
   connection: local
   become: true
-  vars:
-    domain: ad.rischool.ru
-    dc_ip: 192.168.88.252  # IP address of domain controller
+  vars_files:
+    - vars/vars.yml
 
   pre_tasks:
     - name: Update apt repositories
@@ -23,7 +22,6 @@
       ansible.builtin.include_tasks: tasks/repositories.yml
     - name: Configure snap installer
       ansible.builtin.include_tasks: tasks/snapd.yml
-      when: ansible_facts['distribution'] == 'Linux Mint'
     # Install packages
     - name: Install packages
       ansible.builtin.include_tasks: tasks/packages.yml
@@ -52,7 +50,7 @@
     # - name: Set home directory mount
     #   ansible.builtin.include_tasks: tasks/mount.yml
     # Configure the automatic setup of home profile for new users
-    - name: Configure home profile
+    - name: Configure automatic home profile setup
       ansible.builtin.include_tasks: tasks/home_profile.yml
     # Set Firefox policies using a policies.json file
     - name: Set Firefox policy
