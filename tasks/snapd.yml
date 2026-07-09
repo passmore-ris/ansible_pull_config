@@ -43,3 +43,8 @@
         owner: root
         group: root
         state: link
+
+- name: Install snap on Debian
+  ansible.builtin.apt:
+    name: snapd
+    state: present
