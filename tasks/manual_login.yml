@@ -1,3 +1,8 @@
+- name: Check if GNOME is in use
+  ansibile.builtin.stat:
+    path: /usr/bin/gnome-shell
+  register: gnome_shell
+
 - name: Turn on manual login for Linux Mint workstations
   ansible.builtin.copy:
     src: files/lightdm.conf
@@ -24,7 +29,7 @@
 #  when: ansible_facts['distribution'] == 'Debian'
 
 - name: Configure login screen for GNOME workstations
-  when: ansible_facts['packages'] is defined and 'gnome-shell' in ansible_facts['packages']
+  when: gnome_shell.stat.exists
   block:
     - name: Create /etc/dconf/profile/gdm file
       ansible.builtin.file:
