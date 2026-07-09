@@ -28,7 +28,7 @@
     # Edit packages
     - name: Edit packages
       ansible.builtin.include_tasks: tasks/thonny.yml # Thonny needs to be...edited a little bit. Removes the flag.
-      when: ansible_facts['distribution'] != 'MOS' # Not needed on the MOS OS
+      when: ansible_local.workstation.role.name | default('pupil') == 'pupil' # Only relevant for pupil workstations.
     # Make users, including ansible user for automatic pulling
     - name: Make users
       ansible.builtin.include_tasks: tasks/users.yml
