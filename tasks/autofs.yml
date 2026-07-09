@@ -6,6 +6,19 @@
     state: present
   when: ansible_os_family == 'Debian'
 
+- name: Import sssd.conf
+  ansible.builtin.copy:
+    src: files/sssd.conf
+    dest: /etc/sssd/sssd.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Restart sssd
+  anisble.builtin.service:
+    name: sssd
+    state: restarted
+
 - name: Ensure autofs is started and enabled
   ansible.builtin.systemd:
     name: autofs
