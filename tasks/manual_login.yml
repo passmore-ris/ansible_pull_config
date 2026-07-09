@@ -85,7 +85,7 @@
         block: |
           [org/gnome/login-screen]
           disable-user-list=true
-          logo='/usr/share/pixmaps/logo/ris-logo.png
+          logo='/usr/share/pixmaps/logo/ris-logo.png'
 
     - name: Update dconf database
       ansible.builtin.command: dconf update
