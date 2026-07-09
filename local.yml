@@ -16,6 +16,13 @@
         update_cache: true
       changed_when: false
       when: ansible_os_family == "RedHat" or ansible_facts['distribution'] == 'MOS'
+    - name: Ensure presence of /var/cache/ansible
+      ansible.builtin.file:
+        path: /var/cache/ansible
+        state: directory
+        owner: root
+        group: root
+        mode: '0644'
 
   tasks:
     - name: Change repositories to Yandex mirrors
