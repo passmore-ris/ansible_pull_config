@@ -1,4 +1,4 @@
-\- name: Check if GNOME is in use
+- name: Check if GNOME is in use
   ansible.builtin.stat:
     path: /usr/bin/gnome-shell
   register: gnome_shell
