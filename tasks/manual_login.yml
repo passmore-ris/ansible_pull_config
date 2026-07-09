@@ -16,15 +16,15 @@
     mode: '0664'
   when: ansible_facts['distribution'] == 'MOS'
 
-- name: Turn on manual login for Debian workstations
-  ansible.builtin.lineinfile:
-    path: /etc/gdm3/greeter.dconf-defaults
-    regexp: '^#?disable-user-list=false'
-    line: 'disable-user-list=true'
-  when: ansible_facts['distribution'] == 'Debian'
+#- name: Turn on manual login for Debian workstations
+#  ansible.builtin.lineinfile:
+#    path: /etc/gdm3/greeter.dconf-defaults
+#    regexp: '^#?disable-user-list=false'
+#    line: 'disable-user-list=true'
+#  when: ansible_facts['distribution'] == 'Debian'
 
-- name: Turn on manual login for RedHat Workstations
-  when: ansible_os_family == 'RedHat'
+- name: Configure login screen for GNOME workstations
+  when: ansible_facts['packages'] is defined and 'gnome-shell' in ansible_facts['packages']
   block:
     - name: Create /etc/dconf/profile/gdm file
       ansible.builtin.file:
@@ -33,6 +33,15 @@
         owner: root
         group: root
         mode: '0644'
+
+    - name: Copy logo to workstation
+      ansible.builtin.copy:
+        src: files/ris-logo.png
+        dest: /usr/share/pixmaps/logo/ris-logo.png
+        owner: root
+        group: root
+        mode: '0644'
+
     - name: Add content to /etc/dconf/profile/gdm
       ansible.builtin.blockinfile:
         path: /etc/dconf/profile/gdm
@@ -41,7 +50,7 @@
           system-db:gdm
           file-db:/usr/share/gdm/greeter-dconf-defaults
 
-    - name: Create /etc/dconf/db/gdm.d/00-login-screen file
+    - name: Create login screen configuration
       ansible.builtin.file:
         path: /etc/dconf/db/gdm.d/00-login-screen
         state: touch
@@ -55,6 +64,7 @@
         block: |
           [org/gnome/login-screen]
           disable-user-list=true
+          logo='/usr/share/pixmaps/logo/ris-logo.png
       notify: Update dconf database
 
     - name: Update dconf database

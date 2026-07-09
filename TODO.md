@@ -10,6 +10,8 @@
 - [x] Configure the automatic setup of home profile for new users
 - [x] Install Veyon and import its configuration. Prevent pupils from launching Veyon Master.
 - [ ] Configure new profiles with /etc/skel
+- [ ] Fix login screen tasks
+
 
 - [ ] Include facts in `/etc/ansible/facts.d/workstation.fact` in workstation. Change to pupil if necessary.
 ```ini
