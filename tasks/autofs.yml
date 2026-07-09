@@ -14,11 +14,6 @@
     group: root
     mode: '0644'
 
-- name: Restart sssd
-  ansible.builtin.service:
-    name: sssd
-    state: restarted
-
 - name: Ensure autofs is started and enabled
   ansible.builtin.systemd:
     name: autofs
