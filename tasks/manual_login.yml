@@ -39,6 +39,14 @@
         group: root
         mode: '0644'
 
+    - name: Ensure logo directory exists
+      ansible.builtin.file:
+        path: /usr/share/pixmaps/logo
+        state: directory
+        owner: root
+        group: root
+        mode: '0644'
+
     - name: Copy logo to workstation
       ansible.builtin.copy:
         src: files/ris-logo.png
