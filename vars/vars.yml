@@ -1,1 +1,1 @@
-veyon_download_path: "var/cache/ansible/veyon.deb"
+veyon_download_path: "/var/cache/ansible/veyon.deb"
