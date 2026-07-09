@@ -1,48 +1,53 @@
-- name: Check if Veyon has already been downloaded
-  ansible.builtin.stat:
-    path: "{{ veyon_download_path }}"
-  register: veyon_downloaded
+#- name: Check if Veyon has already been downloaded
+#  ansible.builtin.stat:
+#    path: "{{ veyon_download_path }}"
+#  register: veyon_downloaded
+#
+#- name: Download Veyon
+#  when: not veyon_downloaded.stat.exists
+#  block:
+#    - name: Download Veyon .deb for Ubuntu
+#      ansible.builtin.get_url:
+#        url: https://github.com/veyon/veyon/releases/download/v4.10.1/veyon_4.10.1.0-ubuntu.24.04_amd64.deb # Ubuntu 24.04
+#        dest: "{{ veyon_download_path }}"
+#        owner: root
+#        group: root
+#        mode: '0644'
+#      when:
+#        - ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
+#        - ansible_facts['distribution_major_version'] == '24.04'
+#
+#    - name: Download Veyon .deb for Debian 13
+#      ansible.builtin.get_url:
+#        url: https://github.com/veyon/veyon/releases/download/v4.10.4/veyon_4.10.4.0-debian.13_amd64.deb
+#        dest: "{{ veyon_download_path }}"
+#        owner: root
+#        group: root
+#        mode: '0644'
+#      when:
+#        - ansible_facts['distribution'] == 'Debian'
+#        - ansible_facts['distribution_major_version'] == '13'
+#
+#    - name: Download Veyon .rpm for Rocky/Alma/CentOS/RedHat 10
+#      ansible.builtin.get_url:
+#        url: https://github.com/veyon/veyon/releases/download/v4.10.4/veyon-4.10.4.0-rhel.10.x86_64.rpm
+#        dest: "{{ veyon_download_path }}"
+#        owner: root
+#        group: root
+#        mode: '0644'
+#      when:
+#        - ansible_os_family == 'RedHat'
+#        - ansible_facts['distribution_major_version'] == '10'
+#
+#- name: Install Veyon .deb package
+#  ansible.builtin.apt:
+#    deb: "{{ veyon_download_path }}"
+#  when: ansible_os_family == 'Debian'
 
-- name: Download Veyon
-  when: not veyon_downloaded.stat.exists
-  block:
-    - name: Download Veyon .deb for Ubuntu
-      ansible.builtin.get_url:
-        url: https://github.com/veyon/veyon/releases/download/v4.10.1/veyon_4.10.1.0-ubuntu.24.04_amd64.deb # Ubuntu 24.04
-        dest: "{{ veyon_download_path }}"
-        owner: root
-        group: root
-        mode: '0644'
-      when:
-        - ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
-        - ansible_facts['distribution_major_version'] == '24.04'
-
-    - name: Download Veyon .deb for Debian 13
-      ansible.builtin.get_url:
-        url: https://github.com/veyon/veyon/releases/download/v4.10.4/veyon_4.10.4.0-debian.13_amd64.deb
-        dest: "{{ veyon_download_path }}"
-        owner: root
-        group: root
-        mode: '0644'
-      when:
-        - ansible_facts['distribution'] == 'Debian'
-        - ansible_facts['distribution_major_version'] == '13'
-
-    - name: Download Veyon .rpm for Rocky/Alma/CentOS/RedHat 10
-      ansible.builtin.get_url:
-        url: https://github.com/veyon/veyon/releases/download/v4.10.4/veyon-4.10.4.0-rhel.10.x86_64.rpm
-        dest: "{{ veyon_download_path }}"
-        owner: root
-        group: root
-        mode: '0644'
-      when:
-        - ansible_os_family == 'RedHat'
-        - ansible_facts['distribution_major_version'] == '10'
-
-- name: Install Veyon .deb package
+- name: Install Veyon Master
   ansible.builtin.apt:
-    deb: "{{ veyon_download_path }}"
-  when: ansible_os_family == 'Debian'
+    name: veyon-master
+    state: present
 
 - name: Install Veyon .rpm package
   ansible.builtin.dnf:
