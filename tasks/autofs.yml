@@ -19,3 +19,13 @@
     name: autofs
     state: started
     enabled: true
+
+- name: Restart sssd
+  ansible.builtin.service:
+    name: sssd
+    state: restarted
+
+- name: Restart autofs
+  ansible.builtin.service:
+    name: autofs
+    state: restarted
