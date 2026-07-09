@@ -1,4 +1,4 @@
-- name: Check if GNOME is in use
+\- name: Check if GNOME is in use
   ansible.builtin.stat:
     path: /usr/bin/gnome-shell
   register: gnome_shell
@@ -88,7 +88,7 @@
           logo='/usr/share/pixmaps/logo/ris-logo.png
       notify: Update dconf database
 
-  handlers:
-    - name: Update dconf database
-      ansible.builtin.command: dconf
-      changed_when: false
+handlers:
+  - name: Update dconf database
+    ansible.builtin.command: dconf
+    changed_when: false
