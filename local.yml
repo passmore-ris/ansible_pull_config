@@ -51,8 +51,8 @@
       ansible.builtin.include_tasks: tasks/mkhomedir.yml
       when: ansible_os_family == 'Debian'
     # Turn on manual login, so users can type in their domain usernames.
-    - name: Turn on manual login
-      ansible.builtin.include_tasks: tasks/manual_login.yml
+    - name: Configure the login screen
+      ansible.builtin.include_tasks: tasks/login_screen.yml
     # # Set the user's home directory on the file server to mount at ~/MySharedFolders
     # - name: Set home directory mount
     #   ansible.builtin.include_tasks: tasks/mount.yml
