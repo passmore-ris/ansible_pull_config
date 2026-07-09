@@ -39,7 +39,7 @@
 
 
 - name: Copy greeter dconf file to debian workstations
-  ansibile.builtin.copy:
+  ansible.builtin.copy:
     src: files/greeter.dconf-defaults
     dest: /etc/gdm3/greeter.dconf-defaults
     owner: root
