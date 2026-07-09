@@ -86,9 +86,7 @@
           [org/gnome/login-screen]
           disable-user-list=true
           logo='/usr/share/pixmaps/logo/ris-logo.png
-      notify: Update dconf database
 
-handlers:
-  - name: Update dconf database
-    ansible.builtin.command: dconf
-    changed_when: false
+    - name: Update dconf database
+      ansible.builtin.command: dconf update
+      changed_when: false
