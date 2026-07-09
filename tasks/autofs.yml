@@ -15,7 +15,7 @@
     mode: '0644'
 
 - name: Restart sssd
-  anisble.builtin.service:
+  ansible.builtin.service:
     name: sssd
     state: restarted
 
