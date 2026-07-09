@@ -133,7 +133,7 @@
         "BindDN": "uid=veyonreader,cn=users,cn=accounts,dc=ipa,dc=rischool,dc=ru",
         "BindPassword": "37c26dcc95c1f884a3754c78b91df8c64f421656bcbdb28c43a44942df04ed8fd45d841333bc16967d68df4bc0fb0ef35c577262ffee8568632e0091e385ff79a6e6546f2254506ea4f492a402e9639c405873dd3516a8a97933ed5188e444a993f6ed82c5be01bdec0a23388a03c5d63ef999d5e5380a3438b5f65fd8500ae796a9b37e043f27ec1cf4ca91a6a25fe76cf3df93ed34fa6a9b4a158e1d08e890a466626e5ef45d95a67ef6ab97d4cfb43c995f16868a84187424bbf31cab35283600151d5009a1ee9d31d11a51a2980cf1e90da4be07aacb46988609ed8a17b45e67bfc3334ef646a92c9f991e6af71432521ba530af772a1d7fc054aadb2082c570a7cfb0f0fd03f8d103817fd9ff946d82eb96f9ac690dae72d2745eae01ca4ad7b3dcccfff5713de16341ad2dd96b09d26a6661708410fa0b0bfcf234cc7046c3dbc077d6fe107f502a257ff6d0730c093444216d8ae616c15055af776c117de20350b67d37bb3b85fbe883400ef84e345aeb1d2b5cc5ae3f47b13c8c4db9d87c85f7c8dfa2b47c59df3d2be9a593ced2dcc8a04d9d653daee81604910553b264f8a9b22110f152f4d81d7eb472be454b8b09e76627580811cb8a57f05049332e2cb15394b91f040de9debf12bdd8e7292ad9a4b3755ea7b63f5e724b5bb3ea3d54ad96cb62dcfed424d8fd203f7901af9be2284a2e58a3c346493db427e6",
         "ComputerGroupTree": "cn=hostgroups,cn=accounts",
-        "ComputerGroupsFilter": "",
+        "ComputerGroupsFilter": "(objectClass=mepOriginEntry)",
         "ComputerHostNameAsFQDN": "true",
         "ComputerHostNameAttribute": "fqdn",
         "ComputerLocationAttribute": "nsHostLocation",
