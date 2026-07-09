@@ -63,6 +63,14 @@
           system-db:gdm
           file-db:/usr/share/gdm/greeter-dconf-defaults
 
+    - name: Create login screen database directory
+      ansible.builtin.file:
+        path: /etc/dconf/db/gdm.d
+        state: directory
+        owner: root
+        group: root
+        mode: '0644'
+
     - name: Create login screen configuration
       ansible.builtin.file:
         path: /etc/dconf/db/gdm.d/00-login-screen
