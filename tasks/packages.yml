@@ -6,6 +6,8 @@
       - apt-transport-https
       - curl
       - ca-certificates
+      - flatpak
+    state: present
     update_cache: true
   when: ansible_os_family == 'Debian'
 
@@ -51,12 +53,26 @@
 
 # Install common packages for all workstations
 
-- name: Install apt packages for all workstations
-  ansible.builtin.apt:
-    name:
-      - onlyoffice-desktopeditors
-    update_cache: true
+# - name: Install apt packages for all workstations
+#   ansible.builtin.apt:
+#     name:
+#       - onlyoffice-desktopeditors
+#     update_cache: true
+#     state: present
+
+- name: Ensure the Flathub repository is enabled
+  community.general.flatpak_remote:
+    name: flathub
     state: present
+    method: system # Use 'user' if you don't have sudo access
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+- name: Install ONLYOFFICE Desktop Editors
+  community.general.flatpak:
+    name: org.onlyoffice.desktopeditors
+    remote: flathub
+    state: present
+    method: system
 
 # Install packages for pupil workstations
 
