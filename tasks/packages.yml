@@ -1,3 +1,6 @@
+########################
+# Prepare dependencies #
+########################
 - name: Install depedencies for debian-based systems
   ansible.builtin.apt:
     name:
@@ -51,15 +54,6 @@
         architectures: amd64
         signed_by: https://dl.google.com/linux/linux_signing_key.pub
 
-# Install common packages for all workstations
-
-# - name: Install apt packages for all workstations
-#   ansible.builtin.apt:
-#     name:
-#       - onlyoffice-desktopeditors
-#     update_cache: true
-#     state: present
-
 - name: Ensure the Flathub repository is enabled
   community.general.flatpak_remote:
     name: flathub
@@ -67,19 +61,25 @@
     method: system # Use 'user' if you don't have sudo access
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-- name: Install ONLYOFFICE Desktop Editors
+##############################################
+# Install packages common to pupils and staff#
+##############################################
+
+- name: Install OnlyOffice Desktop Editors
   community.general.flatpak:
     name: org.onlyoffice.desktopeditors
     remote: flathub
     state: present
     method: system
 
-# Install packages for pupil workstations
+###########################################
+# Install packages for pupil workstations #
+###########################################
 
 - name: Install packages for pupil workstations
   when: ansible_local.workstation.role.name | default('pupil') == 'pupil'
   block:
-    - name: Install apt packages
+    - name: Install apt packages for pupil workstations
       ansible.builtin.package:
         name:
           - blender
@@ -95,7 +95,30 @@
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
         update_cache: true
 
-# Install packages for staff workstations
+# Special method for installing Turbowarp Desktop on Debian-based systems
+
+    - name: Check for Turbowarp installation file
+      ansible.builtin.stat:
+        path: /opt/turbowarp-desktop.deb
+      register: turbowarp_installer
+
+    - name: Download Turbowarp Desktop installer
+      when: not turbowarp_installer.stat.exists
+      block:
+        - name: Download deb package for Turbowarp Desktop
+          ansible.builtin.get_url:
+            url: https://github.com/TurboWarp/desktop/releases/download/v1.16.0/TurboWarp-linux-amd64-1.16.0.deb
+            dest: /opt/turbowarp-desktop.deb
+            mode: '0644'
+        - name: Install Turbowarp Desktop
+          ansible.builtin.apt:
+            deb: /opt/turbowarp-desktop.deb
+            state: present
+
+###########################################
+# Install packages for staff workstations #
+###########################################
+
 - name: Install packages for staff workstations
   when: ansible_local.workstation.role.name | default('pupil') == 'staff'
   block:
@@ -122,10 +145,17 @@
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
           - errands
           - okular
-          - standardnotes
         state: present
         update_cache: true
       when: ansible_os_family == 'Debian'
+
+    - name: Install flatpaks for staff workstations
+      community.general.flatpak:
+        name:
+          - md.obsidian.Obsidian
+        remote: flathub
+        state: present
+        method: system
 
 #    - name: Install dnf-specific packages
 #      ansible.builtin.dnf:
