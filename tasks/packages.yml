@@ -9,6 +9,32 @@
     update_cache: true
   when: ansible_os_family == 'Debian'
 
+# Install packages common to pupils and staff
+# OnlyOffice:
+- name: Download OnlyOffice GPG key from Ubuntu keyserver
+  ansible.builtin.get_url:
+    url: "https://keyserver.ubuntu.com/pks/lookup?op=get&options=mr&search=0xCB2DE8E5"
+    dest: /usr/share/keyrings/onlyoffice.asc
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Add OnlyOffice DEB822 repository
+  ansible.builtin.deb822_repository:
+    name: onlyoffice
+    types: deb
+    uris: https://download.onlyoffice.com/repo/debian
+    suites: squeeze
+    components: main
+    signed_by: /usr/share/keyrings/onlyoffice.asc
+
+- name: Install apt packages for all workstations
+  ansible.builtin.apt:
+    name:
+      - onlyoffice-desktopeditors
+    update_cache: true
+    state: present
+
 # Install packages for pupil workstations
 
 - name: Install packages for pupil workstations
@@ -44,7 +70,6 @@
       community.general.snap:
         name:
           - turbowarp-desktop     # Turbowarp not able to be installed via its official repository, but snap installation works.
-          - onlyoffice-desktopeditors
         classic: true
         state: present
 
@@ -84,8 +109,16 @@
       ansible.builtin.apt:
         name:
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
+          - errands
+          - okular
         state: present
       when: ansible_os_family == 'Debian'
+
+    - name: Install Obsidian via flathub
+      community.general.flatpak:
+        name:
+          - md.obsidian.Obsidian
+        state: present
 
 #    - name: Install dnf-specific packages
 #      ansible.builtin.dnf:
@@ -93,12 +126,3 @@
 #          - 
 #        state: present
 #      when: ansible_os_family == 'RedHat'
-
-    - name: Install snap packages
-      community.general.snap:
-        name:
-          - onlyoffice-desktopeditors
-          - obsidian
-          - pdfarranger
-        classic: true
-        state: present
