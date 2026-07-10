@@ -76,6 +76,9 @@
     "NetworkObjectDirectory": {
         "Plugin": "6f0a491e-c1c6-4338-8244-f823b0bf8670"
     },
+    "Service": {
+        "HideTrayIcon": "true"
+    },
     "UI": {
         "ColorScheme": "1"
     },
