@@ -6,28 +6,59 @@
       - apt-transport-https
       - curl
       - ca-certificates
-      - flatpak
     update_cache: true
   when: ansible_os_family == 'Debian'
 
-# Install packages common to pupils and staff
-# OnlyOffice:
-- name: Download OnlyOffice GPG key from Ubuntu keyserver
-  ansible.builtin.get_url:
-    url: "https://keyserver.ubuntu.com/pks/lookup?op=get&options=mr&search=0xCB2DE8E5"
-    dest: /usr/share/keyrings/onlyoffice.asc
-    owner: root
-    group: root
-    mode: '0644'
+# Add repositories
 
-- name: Add OnlyOffice DEB822 repository
-  ansible.builtin.deb822_repository:
-    name: onlyoffice
-    types: deb
-    uris: https://download.onlyoffice.com/repo/debian
-    suites: squeeze
-    components: main
-    signed_by: /usr/share/keyrings/onlyoffice.asc
+- name: Add deb repositories
+  when: ansible_os_family == 'Debian'
+  block:
+    - name: Download OnlyOffice GPG key from Ubuntu keyserver
+      ansible.builtin.get_url:
+        url: "https://keyserver.ubuntu.com/pks/lookup?op=get&options=mr&search=0xCB2DE8E5"
+        dest: /usr/share/keyrings/onlyoffice.asc
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Add OnlyOffice DEB822 repository
+      ansible.builtin.deb822_repository:
+        name: onlyoffice
+        types: deb
+        uris: https://download.onlyoffice.com/repo/debian
+        suites: squeeze
+        components: main
+        signed_by: /usr/share/keyrings/onlyoffice.asc
+
+    - name: Add Sublime repository
+      ansible.builtin.deb822_repository:
+        name: sublime
+        types: deb
+        uris: https://download.sublimetext.com
+        suites: apt/stable/
+        signed_by: https://download.sublimetext.com/sublimehq-pub.gpg
+
+    - name: Add Google Chrome deb repository
+      ansible.builtin.deb822_repository:
+        name: google-chrome
+        types: deb
+        uris: https://dl.google.com/linux/chrome-stable/deb/
+        suites: stable
+        components: main
+        architectures: amd64
+        signed_by: https://dl.google.com/linux/linux_signing_key.pub
+
+    - name: Add standard notes deb repository
+      ansible.builtin.deb822_repository:
+        name: standard-notes
+        types: deb
+        uris: https://update.standardnotes.org/amd64/
+        suites: stable
+        components: main
+        signed_by: https://standardnotes.org/keys/signing.asc
+
+# Install common packages for all workstations
 
 - name: Install apt packages for all workstations
   ansible.builtin.apt:
@@ -41,15 +72,6 @@
 - name: Install packages for pupil workstations
   when: ansible_local.workstation.role.name | default('pupil') == 'pupil'
   block:
-    - name: Add Sublime repository
-      ansible.builtin.deb822_repository:
-        name: sublime
-        types: deb
-        uris: https://download.sublimetext.com
-        suites: apt/stable/
-        signed_by: https://download.sublimetext.com/sublimehq-pub.gpg
-      when: ansible_os_family == 'Debian'
-
     - name: Install apt packages
       ansible.builtin.package:
         name:
@@ -70,17 +92,6 @@
 - name: Install packages for staff workstations
   when: ansible_local.workstation.role.name | default('pupil') == 'staff'
   block:
-    - name: Add Google Chrome deb repository
-      ansible.builtin.deb822_repository:
-        name: google-chrome
-        types: deb
-        uris: https://dl.google.com/linux/chrome-stable/deb/
-        suites: stable
-        components: main
-        architectures: amd64
-        signed_by: https://dl.google.com/linux/linux_signing_key.pub
-      when: ansible_os_family == 'Debian'
-
     - name: Add Google Chrome yum repository
       ansible.builtin.yum_repository:
         name: google-chrome
@@ -104,19 +115,14 @@
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
           - errands
           - okular
+          - standardnotes
         state: present
+        update_cache: true
       when: ansible_os_family == 'Debian'
-
-    - name: Install Obsidian via flathub
-      community.general.flatpak:
-        name:
-          - md.obsidian.Obsidian
-        remote: flathub
-        state: present
 
 #    - name: Install dnf-specific packages
 #      ansible.builtin.dnf:
 #        name:
-#          - 
+#          -
 #        state: present
 #      when: ansible_os_family == 'RedHat'
