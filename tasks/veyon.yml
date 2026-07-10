@@ -80,5 +80,5 @@
   ansible.builtin.file:
     path: /usr/bin/veyon-master
     owner: root
-    group: staff
+    group: '10000'
     mode: '0770'
