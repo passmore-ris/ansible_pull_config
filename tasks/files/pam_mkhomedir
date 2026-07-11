@@ -1,5 +1,5 @@
 Name: Create home directory on login
-Default: yes
+Default: no
 Priority: 900
 Session-Type: Additional
 Session:

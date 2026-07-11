@@ -54,9 +54,9 @@
 
     # Enable automatic creation of home directories for Debian-based systems.
     # This is automatically enabled in RedHat-based systems.
-    - name: Enable automatic home directory creation
-      ansible.builtin.include_tasks: tasks/mkhomedir.yml
-      when: ansible_os_family == 'Debian'
+    # - name: Enable automatic home directory creation
+    #   ansible.builtin.include_tasks: tasks/mkhomedir.yml
+    #   when: ansible_os_family == 'Debian'
 
     # Turn on manual login, so users can type in their domain usernames.
     - name: Configure the login screen
@@ -67,8 +67,8 @@
     #   ansible.builtin.include_tasks: tasks/mount.yml
 
     # Configure the automatic setup of home profile for new users
-    - name: Configure automatic home profile setup
-      ansible.builtin.include_tasks: tasks/home_profile.yml
+    # - name: Configure automatic home profile setup
+    #   ansible.builtin.include_tasks: tasks/home_profile.yml
 
     # Install and start autofs
     - name: Install and start autofs
