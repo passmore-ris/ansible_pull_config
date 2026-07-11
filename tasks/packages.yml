@@ -65,7 +65,14 @@
 # Install packages common to pupils and staff#
 ##############################################
 
-- name: Install OnlyOffice Desktop Editors
+- name: Install apt packages for both pupil and staff workstations
+  ansible.builtin.apt:
+    name:
+      - sublime-text
+    state: present
+    update_cache: true
+
+- name: Install flatpaks for both pupil and staff workstations
   community.general.flatpak:
     name: org.onlyoffice.desktopeditors
     remote: flathub
@@ -90,7 +97,6 @@
           - audacity
           - dia
           - sqlitebrowser
-          - sublime-text
           - tmux
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
         update_cache: true
@@ -132,14 +138,14 @@
         enabled: true
       when: ansible_os_family == 'RedHat'
 
-    - name: Install general packages
+    - name: Install general packages for staff workstations
       ansible.builtin.package:
         name:
           - google-chrome-stable
           - vlc
         update_cache: true
 
-    - name: Install apt-specific packages
+    - name: Install apt-specific packages for staff workstations
       ansible.builtin.apt:
         name:
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
