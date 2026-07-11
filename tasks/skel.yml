@@ -1,4 +1,17 @@
-- name: Copy skel contents to /etc/skel
-  unarchive:
-    src: files/skel.tar.gz
-    dest: /etc
+- name: Copy pupil_skel contents to /etc/skel in pupil workstations
+  ansible.builtin.unarchive:
+    src: files/pupil_skel.tar.gz
+    dest: /etc/skel/
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_local.workstation.role.name | default('pupil') == 'pupil'
+
+- name: Copy staff_skel contents to /etc/skel in staff workstations
+  ansible.builtin.unarchive:
+    src: files/staff_skel.tar.gz
+    dest: /etc/skel/
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_local.workstation.role.name | default('pupil') == 'staff'

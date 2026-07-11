@@ -14,8 +14,8 @@
         group: root
         mode: '0644'
       when:
-       - ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
-       - ansible_facts['distribution_major_version'] == '24.04'
+        - ansible_facts['distribution'] in ['Ubuntu', 'Linux Mint']
+        - ansible_facts['distribution_major_version'] == '24.04'
 
     - name: Download Veyon .deb for Debian 13
       ansible.builtin.get_url:
@@ -37,7 +37,7 @@
         mode: '0644'
       when:
         - ansible_os_family == 'RedHat'
-        - ansible_facts['distribution_major_version'] == '10' 
+        - ansible_facts['distribution_major_version'] == '10'
 
 - name: Install Veyon .deb package
   ansible.builtin.apt:
@@ -81,4 +81,4 @@
     path: /usr/bin/veyon-master
     owner: root
     group: '10000'
-    mode: '0755'
+    mode: '0750'
