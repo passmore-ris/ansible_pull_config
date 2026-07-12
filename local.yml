@@ -67,8 +67,8 @@
     #   ansible.builtin.include_tasks: tasks/mount.yml
 
     # Configure the automatic setup of home profile for new users
-    # - name: Configure automatic home profile setup
-    #   ansible.builtin.include_tasks: tasks/home_profile.yml
+    - name: Configure automatic home profile setup
+      ansible.builtin.include_tasks: tasks/home_profile.yml
 
     # Install and start autofs
     - name: Install and start autofs

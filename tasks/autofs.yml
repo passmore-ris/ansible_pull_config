@@ -15,7 +15,7 @@
 #     mode: '0600'
 
 - name: Ensure autofs is included in SSSD services
-  ansible.builtin.ini_file:
+  community.general.ini_file:
     path: /etc/sssd/sssd.conf
     section: sssd
     option: services
