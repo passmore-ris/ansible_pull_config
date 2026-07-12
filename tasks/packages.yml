@@ -71,6 +71,7 @@
       - sublime-text
     state: present
     update_cache: true
+  when: ansible_os_family == 'Debian'
 
 - name: Install flatpaks for both pupil and staff workstations
   community.general.flatpak:

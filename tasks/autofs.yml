@@ -6,10 +6,20 @@
     state: present
   when: ansible_os_family == 'Debian'
 
-- name: Import sssd.conf
-  ansible.builtin.copy:
-    src: files/sssd.conf
-    dest: /etc/sssd/sssd.conf
+# - name: Import sssd.conf
+#   ansible.builtin.copy:
+#     src: files/sssd.conf
+#     dest: /etc/sssd/sssd.conf
+#     owner: root
+#     group: root
+#     mode: '0600'
+
+- name: Ensure autofs is included in SSSD services
+  ansible.builtin.ini_file:
+    path: /etc/sssd/sssd.conf
+    section: sssd
+    option: services
+    value: "nss, pam, ssh, sudo, autofs"
     owner: root
     group: root
     mode: '0600'
