@@ -69,6 +69,7 @@
   ansible.builtin.apt:
     name:
       - sublime-text
+      - vlc
     state: present
     update_cache: true
   when: ansible_os_family == 'Debian'
@@ -143,7 +144,6 @@
       ansible.builtin.package:
         name:
           - google-chrome-stable
-          - vlc
         update_cache: true
 
     - name: Install apt-specific packages for staff workstations
