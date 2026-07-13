@@ -1,17 +1,17 @@
 - name: Remove rainbow wallpapers
-  ansibile.builtin.file:
-    path: /usr/share/backgrounds/pride-d.jxl
+  ansible.builtin.file:
+    path: /usr/share/backgrounds/gnome/pride-d.jxl
     state: absent
 
 - name: Remove rainbow wallpapers
   ansible.builtin.file:
-    path: /usr/share/backgrounds/pride-l.jxl
+    path: /usr/share/backgrounds/gnome/pride-l.jxl
     state: absent
 
 - name: Add cosmic wallpapers
   ansible.builtin.unarchive:
     src: files/cosmic_wallpapers.tar.gz
-    dest: /usr/share/backgrounds/
+    dest: /usr/share/backgrounds/gnome/
     owner: root
     group: root
     mode: '0644'
