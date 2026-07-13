@@ -8,10 +8,26 @@
     path: /usr/share/backgrounds/gnome/pride-l.jxl
     state: absent
 
+- name: Update xml for wallpaper removal
+  ansible.builtin.copy:
+    src: files/remove_wallpapers.xml
+    dest: /usr/share/gnome-background-properties/remove_wallpapers.xml
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Add cosmic wallpapers
   ansible.builtin.unarchive:
     src: files/cosmic_wallpapers.tar.gz
     dest: /usr/share/backgrounds/gnome/
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Update xml for cosmic wallpapers
+  ansible.builtin.copy:
+    src: files/extra_wallpapers.xml
+    dest: /usr/share/gnome-background-properties/extra_wallpapers.xml
     owner: root
     group: root
     mode: '0644'

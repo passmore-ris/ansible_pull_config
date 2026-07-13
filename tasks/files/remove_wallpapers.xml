@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="true">
+    <name>Pride Light</name>
+    <filename>/usr/share/backgrounds/gnome/pride-l.jxl</filename>
+  </wallpaper>
+  <wallpaper deleted="true">
+    <name>Pride Dark</name>
+    <filename>/usr/share/backgrounds/gnome/pride-d.jxl</filename>
+  </wallpaper>
+</wallpapers>

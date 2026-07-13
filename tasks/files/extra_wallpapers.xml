@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Orion Nebula</name>
+    <filename>/usr/share/backgrounds/gnome/orion_nebula.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper deleted="false">
+    <name>A Stormy Stellar Nursery</name>
+    <filename>/usr/share/backgrounds/gnome/A_stormy_stellar_nursery.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper deleted="false">
+    <name>Otherworldly Earth</name>
+    <filename>/usr/share/backgrounds/gnome/otherworldly_earth.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper deleted="false">
+    <name>Tarantula Nebula</name>
+    <filename>/usr/share/backgrounds/gnome/tarantula_nebula.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+</wallpapers>
