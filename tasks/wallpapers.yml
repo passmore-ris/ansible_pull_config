@@ -8,13 +8,12 @@
     path: /usr/share/backgrounds/gnome/pride-l.jxl
     state: absent
 
-- name: Update xml for wallpaper removal
-  ansible.builtin.copy:
-    src: files/remove_wallpapers.xml
-    dest: /usr/share/gnome-background-properties/remove_wallpapers.xml
-    owner: root
-    group: root
-    mode: '0644'
+- name: Disable rainbow wallpaper in GNOME settings
+  community.general.xml:
+    path: /usr/share/gnome-background-properties/pride.xml
+    xpath: /wallpapers/wallpaper
+    attribute: deleted
+    value: "true"
 
 - name: Add cosmic wallpapers
   ansible.builtin.unarchive:
