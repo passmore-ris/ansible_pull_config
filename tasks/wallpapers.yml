@@ -1,14 +1,4 @@
-- name: Remove rainbow wallpapers
-  ansible.builtin.file:
-    path: /usr/share/backgrounds/gnome/pride-d.jxl
-    state: absent
-
-- name: Remove rainbow wallpapers
-  ansible.builtin.file:
-    path: /usr/share/backgrounds/gnome/pride-l.jxl
-    state: absent
-
-- name: Disable rainbow wallpaper in GNOME settings
+- name: Disable Pride wallpaper in GNOME settings
   community.general.xml:
     path: /usr/share/gnome-background-properties/pride.xml
     xpath: /wallpapers/wallpaper
