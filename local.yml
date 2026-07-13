@@ -31,6 +31,9 @@
     # - name: Configure snap installer
     #   ansible.builtin.include_tasks: tasks/snapd.yml
 
+    - name: Add wallpapers
+      ansible.builtin.include_tasks: tasks/wallpapers.yml
+
     # Install packages
     - name: Install packages
       ansible.builtin.include_tasks: tasks/packages.yml
