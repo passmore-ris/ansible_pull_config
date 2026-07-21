@@ -86,6 +86,10 @@
     - name: Install Veyon
       ansible.builtin.include_tasks: tasks/veyon.yml
 
+    # Install and set up NetBird
+    - name: Install and set up NetBird
+      ansible.builtin.include_tasks: tasks/netbird.yml
+
     # Configure new profiles with /etc/skel
     # - name: Configure skel profiles
     #   ansible.builtin.include_tasks: tasks/skel.yml
