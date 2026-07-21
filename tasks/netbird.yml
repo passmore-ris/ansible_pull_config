@@ -1,0 +1,65 @@
+- name: Install dependencies
+  ansible.builtin.apt:
+    name:
+      - libgtk-4-1
+      - libwebkitgtk-6.0-4
+      - xdg-utils
+    state: present
+
+- name: Add NetBird repository
+  ansible.builtin.deb822_repository:
+    name: netbird
+    types: deb
+    uris: https://pkgs.netbird.io/debian
+    suites: stable
+    components: main
+    signed_by: https://pkgs.netbird.io/debian/public.key
+
+- name: Install NetBird GUI package
+  ansible.builtin.apt:
+    name: netbird-ui
+    state: present
+  update_cache: true
+
+- name: Spin NetBird up for pupil workstations
+  ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_pupil }}"
+  when: ansible_local.workstation.role.name | default('pupil') == 'pupil'
+
+- name: Spin NetBird up for staff workstations
+  ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_staff }}"
+  when: ansible_local.workstation.role.name | default('pupil') == 'staff'
+
+- name: Install ansible-galaxy collection for managing GNOME extensions
+  community.general.ansible_galaxy_install:
+    type: collection
+    name: shipilovds.workstation
+
+- name: Install GNOME extension to add icons to system tray
+  shipilovds.workstation.gnome_extension:
+    name: appindicatorsupportrgcjonas.gmail.com
+    src: https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v64.shell-extension.zip
+    state: present
+    enabled: true
+
+- name: Ensure system-wide autostart directory exists
+  ansible.builtin.file:
+    path: /etc/xdg/autostart
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Configure system-wide Netbird UI autostart
+  ansible.builtin.copy:
+    dest: /etc/xdg/autostart/netbird-ui.desktop
+    owner: root
+    group: root
+    mode: '0644'
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=Netbird UI
+      Comment=Netbird Client Interface
+      Exec=netbird-ui
+      Terminal=false
+      X-GNOME-Autostart-enabled=true

@@ -1,1 +1,2 @@
 veyon_download_path: "/var/cache/ansible/veyon.deb"
+netbird_management_url: https://netbird.rischool.ru
