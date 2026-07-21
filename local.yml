@@ -24,6 +24,10 @@
         owner: root
         group: root
         mode: '0644'
+    - name: Install ansible-galaxy collection for managing GNOME extensions
+      community.general.ansible_galaxy_install:
+        type: collection
+        name: shipilovds.workstation
 
   tasks:
     - name: Change repositories to Yandex mirrors
