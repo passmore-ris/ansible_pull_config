@@ -29,13 +29,8 @@
   ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_staff }}"
   when: ansible_local.workstation.role.name | default('pupil') == 'staff'
 
-- name: Install ansible-galaxy collection for managing GNOME extensions
-  community.general.ansible_galaxy_install:
-    type: collection
-    name: shipilovds.workstation
-
 - name: Install GNOME extension to add icons to system tray
-  shipilovds.workstation.gnome_extension:
+  gnome_extension:
     name: appindicatorsupportrgcjonas.gmail.com
     src: https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v64.shell-extension.zip
     state: present
