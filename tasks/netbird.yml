@@ -30,7 +30,7 @@
   when: ansible_local.workstation.role.name | default('pupil') == 'staff'
 
 - name: Install GNOME extension to add icons to system tray
-  gnome_extension:
+  shipilovds.workstation.gnome_extension:
     name: appindicatorsupportrgcjonas.gmail.com
     src: https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v64.shell-extension.zip
     state: present
