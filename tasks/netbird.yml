@@ -19,7 +19,7 @@
   ansible.builtin.apt:
     name: netbird-ui
     state: present
-  update_cache: true
+    update_cache: true
 
 - name: Spin NetBird up for pupil workstations
   ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_pupil }}"
