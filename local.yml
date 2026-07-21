@@ -28,6 +28,7 @@
       community.general.ansible_galaxy_install:
         type: collection
         name: shipilovds.workstation
+        dest: /opt/ansible
 
   tasks:
     - name: Change repositories to Yandex mirrors
