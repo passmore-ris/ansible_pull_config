@@ -47,7 +47,6 @@
     content: |
       [org/gnome/shell]
       enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com']
-  notify: Update dconf database
 
 - name: Ensure system-wide autostart directory exists
   ansible.builtin.file:
@@ -71,3 +70,7 @@
       Exec=netbird-ui
       Terminal=false
       X-GNOME-Autostart-enabled=true
+
+- name: Update dconf database
+  ansible.builtin.command: dconf update
+  changed_when: false
