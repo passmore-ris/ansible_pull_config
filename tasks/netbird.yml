@@ -30,43 +30,41 @@
   ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_staff }}"
   when: ansible_local.workstation.role.name | default('pupil') == 'staff'
 
-- name: Create system-wide extension directory for AppIndicator
-  ansible.builtin.file:
-    path: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
-    state: directory
-    owner: root
-    group: root
-    mode: '0755'
+# - name: Create system-wide extension directory for AppIndicator
+#   ansible.builtin.file:
+#     path: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
+#     state: directory
+#     owner: root
+#     group: root
+#     mode: '0755'
 
-- name: Unarchive AppIndicator extension into system directory
-  ansible.builtin.unarchive:
-    src: https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v58.shell-extension.zip
-    dest: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
-    remote_src: true
-    owner: root
-    group: root
-    mode: '0755'
-    creates: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/metadata.json
+# - name: Unarchive AppIndicator extension into system directory
+#   ansible.builtin.unarchive:
+#     src: https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v58.shell-extension.zip
+#     dest: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
+#     remote_src: true
+#     owner: root
+#     group: root
+#     mode: '0755'
+#     creates: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/metadata.json
 
-# 2. dconf System-Wide Configuration
+# - name: Ensure dconf profile directory exists
+#   ansible.builtin.file:
+#     path: /etc/dconf/profile
+#     state: directory
+#     owner: root
+#     group: root
+#     mode: '0755'
 
-- name: Ensure dconf profile directory exists
-  ansible.builtin.file:
-    path: /etc/dconf/profile
-    state: directory
-    owner: root
-    group: root
-    mode: '0755'
-
-- name: Create dconf user profile
-  ansible.builtin.copy:
-    dest: /etc/dconf/profile/user
-    content: |
-      user-db:user
-      system-db:local
-    owner: root
-    group: root
-    mode: '0644'
+# - name: Create dconf user profile
+#   ansible.builtin.copy:
+#     dest: /etc/dconf/profile/user
+#     content: |
+#       user-db:user
+#       system-db:local
+#     owner: root
+#     group: root
+#     mode: '0644'
 
 - name: Ensure dconf local database directory exists
   ansible.builtin.file:
@@ -81,7 +79,7 @@
     dest: /etc/dconf/db/local.d/00-extensions
     content: |
       [org/gnome/shell]
-      enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com']
+      enabled-extensions=['ubuntu-appindicators@ubuntu.com']
     owner: root
     group: root
     mode: '0644'
