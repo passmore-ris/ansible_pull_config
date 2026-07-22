@@ -4,6 +4,7 @@
       - libgtk-4-1
       - libwebkitgtk-6.0-4
       - xdg-utils
+      - gnome-shell-extension-appindicator
     state: present
 
 - name: Add NetBird repository
@@ -29,12 +30,24 @@
   ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_staff }}"
   when: ansible_local.workstation.role.name | default('pupil') == 'staff'
 
-- name: Install GNOME extension to add icons to system tray
-  shipilovds.workstation.gnome_extension:
-    name: appindicatorsupportrgcjonas.gmail.com
-    src: https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v64.shell-extension.zip
-    state: present
-    enabled: true
+- name: Ensure dconf system profile directory exists
+  ansible.builtin.file:
+    path: /etc/dconf/db/local.d
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Enable AppIndicator extension system-wide in dconf
+  ansible.builtin.copy:
+    dest: /etc/dconf/db/local.d/00-extensions
+    owner: root
+    group: root
+    mode: '0644'
+    content: |
+      [org/gnome/shell]
+      enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com']
+  notify: Update dconf database
 
 - name: Ensure system-wide autostart directory exists
   ansible.builtin.file:
