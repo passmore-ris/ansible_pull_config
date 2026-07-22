@@ -48,23 +48,23 @@
 #     mode: '0755'
 #     creates: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com/metadata.json
 
-# - name: Ensure dconf profile directory exists
-#   ansible.builtin.file:
-#     path: /etc/dconf/profile
-#     state: directory
-#     owner: root
-#     group: root
-#     mode: '0755'
+- name: Ensure dconf profile directory exists
+  ansible.builtin.file:
+    path: /etc/dconf/profile
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
 
-# - name: Create dconf user profile
-#   ansible.builtin.copy:
-#     dest: /etc/dconf/profile/user
-#     content: |
-#       user-db:user
-#       system-db:local
-#     owner: root
-#     group: root
-#     mode: '0644'
+- name: Create dconf user profile
+  ansible.builtin.copy:
+    dest: /etc/dconf/profile/user
+    content: |
+      user-db:user
+      system-db:local
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: Ensure dconf local database directory exists
   ansible.builtin.file:
