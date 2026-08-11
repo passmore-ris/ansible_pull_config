@@ -76,9 +76,9 @@
 #     state: present
 #   when: ansible_facts['distribution'] != 'MOS' # MOS uses an old version of ansible that doesn't work with this module.
 
-- name: Only allow staff to execute Veyon Master
+- name: Only allow members of group 'veyon_users' (10002) to execute Veyon Master
   ansible.builtin.file:
     path: /usr/bin/veyon-master
     owner: root
-    group: '10000'
+    group: '10002'
     mode: '0750'
