@@ -61,6 +61,14 @@
     method: system # Use 'user' if you don't have sudo access
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
+- name: Ensure directory for any installer files is present
+  ansible.builtin.file:
+    path: /var/cache/ansible_installs
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
 ##############################################
 # Install packages common to pupils and staff#
 ##############################################

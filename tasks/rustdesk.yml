@@ -1,0 +1,22 @@
+- name: Download installer if absent
+  ansible.builtin.get_url:
+    url: https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-unattended-wayland-1.4.9-x86_64.deb
+    dest: /var/cache/ansible_installs/rustdesk.deb   # Created in packages.yml
+    checksum: sha256:bf145feb829ce1aa10dde8d31e22c85e4d18b1a7915edaca66d6aa23a863bf57
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+  when: ansible_os_family == 'Debian'
+
+- name: Install Rustdesk
+  ansible.builtin.apt:
+    deb: /var/cache/ansible_installs/rustdesk.deb
+    state: present
+  become: true
+
+- name: Set RustDesk password
+  ansible.builtin.command:
+    cmd: "rustdesk --password {{ rustdesk_password }}"
+  become: true
+  no_log: true

@@ -29,15 +29,16 @@
     - name: Change repositories to Yandex mirrors
       ansible.builtin.include_tasks: tasks/repositories.yml
 
-    # - name: Configure snap installer
-    #   ansible.builtin.include_tasks: tasks/snapd.yml
-
     - name: Add wallpapers
       ansible.builtin.include_tasks: tasks/wallpapers.yml
 
     # Install packages
     - name: Install packages
       ansible.builtin.include_tasks: tasks/packages.yml
+
+    - name: Install RustDesk
+      ansible.builtin.include_tasks: tasks/rustdesk.yml
+      when: ansible_local.workstation.role.name | default('pupil') == 'staff' # Only for staff workstations
 
     # Edit packages
     - name: Edit packages
@@ -52,27 +53,9 @@
     - name: Set cron jobs
       ansible.builtin.include_tasks: tasks/cron.yml
 
-    # # Join domain
-    # - name: Join domain
-    #   ansible.builtin.include_tasks: tasks/domain_join.yml
-
-    # Enable automatic creation of home directories for Debian-based systems.
-    # This is automatically enabled in RedHat-based systems.
-    # - name: Enable automatic home directory creation
-    #   ansible.builtin.include_tasks: tasks/mkhomedir.yml
-    #   when: ansible_os_family == 'Debian'
-
     # Turn on manual login, so users can type in their domain usernames.
     - name: Configure the login screen
       ansible.builtin.include_tasks: tasks/login_screen.yml
-
-    # # Set the user's home directory on the file server to mount at ~/MySharedFolders
-    # - name: Set home directory mount
-    #   ansible.builtin.include_tasks: tasks/mount.yml
-
-    # Configure the automatic setup of home profile for new users
-    # - name: Configure automatic home profile setup
-    #   ansible.builtin.include_tasks: tasks/home_profile.yml
 
     # Install and start autofs
     - name: Install and start autofs
@@ -89,7 +72,3 @@
     # Install and set up NetBird
     - name: Install and set up NetBird
       ansible.builtin.include_tasks: tasks/netbird.yml
-
-    # Configure new profiles with /etc/skel
-    # - name: Configure skel profiles
-    #   ansible.builtin.include_tasks: tasks/skel.yml
