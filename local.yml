@@ -70,5 +70,5 @@
       ansible.builtin.include_tasks: tasks/veyon.yml
 
     # Install and set up NetBird
-    - name: Install and set up NetBird
-      ansible.builtin.include_tasks: tasks/netbird.yml
+    # - name: Install and set up NetBird
+    #   ansible.builtin.include_tasks: tasks/netbird.yml
