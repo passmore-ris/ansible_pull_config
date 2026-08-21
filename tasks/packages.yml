@@ -87,6 +87,7 @@
     name:
       - sublime-text
       - vlc
+      - gnome-backgrouds
     state: present
     update_cache: true
   when: ansible_os_family == 'Debian'
@@ -119,6 +120,7 @@
           - tmux
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
           - code
+          - tuxpaint
         update_cache: true
 
 # Special method for installing Turbowarp Desktop on Debian-based systems

@@ -1,3 +1,8 @@
+- name: Check if XFCE is installed
+  ansible.builtin.stat:
+    path: /usr/bin/xfce4-session
+  register: xfce_check
+
 - name: Disable Pride wallpaper in GNOME settings
   community.general.xml:
     path: /usr/share/gnome-background-properties/pride.xml
@@ -20,3 +25,12 @@
     owner: root
     group: root
     mode: '0644'
+
+- name: Add school logo to icons
+  ansible.builtin.copy:
+    src: files/ris_logo.png
+    dest: /usr/share/icons/ris_logo.png
+    owner: root
+    group: root
+    mode: '0644'
+  when: xfce_check.stat.exists

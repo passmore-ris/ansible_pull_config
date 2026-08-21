@@ -29,9 +29,6 @@
     - name: Change repositories to Yandex mirrors
       ansible.builtin.include_tasks: tasks/repositories.yml
 
-    - name: Add wallpapers
-      ansible.builtin.include_tasks: tasks/wallpapers.yml
-
     # Install packages
     - name: Install packages
       ansible.builtin.include_tasks: tasks/packages.yml
@@ -44,6 +41,9 @@
     - name: Edit packages
       ansible.builtin.include_tasks: tasks/thonny.yml # Thonny needs to be...edited a little bit. Removes the flag.
       when: ansible_local.workstation.role.name | default('pupil') == 'pupil' # Only relevant for pupil workstations.
+
+    - name: Add wallpapers & icons
+      ansible.builtin.include_tasks: tasks/wallpapers.yml
 
     # Make users, including ansible user for automatic pulling
     - name: Make users
