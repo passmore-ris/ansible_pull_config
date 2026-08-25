@@ -31,8 +31,8 @@
 
 - name: Copy logo to workstation
   ansible.builtin.copy:
-    src: files/ris-logo.png
-    dest: /usr/share/pixmaps/logo/ris-logo.png
+    src: files/ris_logo.png
+    dest: /usr/share/pixmaps/logo/ris_logo.png
     owner: root
     group: root
     mode: '0644'
@@ -88,7 +88,7 @@
 #        block: |
 #          [org/gnome/login-screen]
 #          disable-user-list=true
-#          logo='/usr/share/pixmaps/logo/ris-logo.png'
+#          logo='/usr/share/pixmaps/logo/ris_logo.png'
 #
 - name: Update dconf database
   ansible.builtin.command: dconf update

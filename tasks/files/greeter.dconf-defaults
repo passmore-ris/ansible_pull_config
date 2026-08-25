@@ -9,7 +9,7 @@
 # Login manager options
 # =====================
 [org/gnome/login-screen]
-logo='/usr/share/pixmaps/logo/ris-logo.png'
+logo='/usr/share/pixmaps/logo/ris_logo.png'
 
 # - Disable user list
 disable-user-list=true
