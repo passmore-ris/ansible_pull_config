@@ -146,7 +146,7 @@
         "GroupTree": "cn=groups,cn=accounts",
         "LocationNameAttribute": "",
         "RecursiveSearchOperations": "false",
-        "ServerHost": "ipa00.ipa.rischool.ru",
+        "ServerHost": "ipa00.ipa.rischool.site",
         "TLSCACertificateFile": "/etc/ipa/ca.crt",
         "TLSVerifyMode": "2",
         "UseBindCredentials": "true",
