@@ -72,3 +72,7 @@
     # Install and set up NetBird
     - name: Install and set up NetBird
       ansible.builtin.include_tasks: tasks/netbird.yml
+
+    # Apply various miscellaneous bugfixes
+    - name: Apply bugfixes
+      ansible.builtin.include_tasks: tasks/bugfixes.yml

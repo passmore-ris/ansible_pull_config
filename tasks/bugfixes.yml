@@ -1,0 +1,32 @@
+- name: Create sleep.conf.d directory
+  ansible.builtin.file:
+    path: /etc/systemd/sleep.conf.d
+    state: directory
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Disable suspend and hibernate on workstations
+  ansible.builtin.copy:
+    dest: /etc/systemd/sleep.conf.d/nosuspend.conf
+    mode: '0644'
+    owner: root
+    group: root
+    content: |
+      [Sleep]
+      AllowSuspend=no
+      AllowHibernation=no
+      AllowSuspendThenHibernate=no
+      AllowHybridSleep=no
+
+- name: Disable suspend on lid close for laptops
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/logind.conf
+    regexp: '^#?HandleLidSwitch='
+    line: 'HandleLidSwitch=ignore'
+
+- name: Disable suspend on lid close for laptops when docked
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/logind.conf
+    regexp: '^#?HandleLidSwitchDocked='
+    line: 'HandleLidSwitchDocked=ignore'
