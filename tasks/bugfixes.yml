@@ -1,3 +1,6 @@
+# This playbook contains bugfixes for various issues that have been reported by users.
+
+# Tasks to disable suspend and hibernate on workstations, which was wreaking havoc.
 - name: Create sleep.conf.d directory
   ansible.builtin.file:
     path: /etc/systemd/sleep.conf.d
@@ -30,3 +33,22 @@
     path: /etc/systemd/logind.conf
     regexp: '^#?HandleLidSwitchDocked='
     line: 'HandleLidSwitchDocked=ignore'
+
+# These tasks will fix "phantom brightness" issues on HONOR laptops with Goodix touchscreens, which are causing the brightness to change randomly.
+# This is due to a phantom input device that is being detected by the system. The following udev rule will ignore this device.
+- name: Ignore Goodix phantom brightness input sub-device
+  ansible.builtin.copy:
+    dest: /etc/udev/rules.d/99-ignore-phantom-brightness.rules
+    content: |
+      SUBSYSTEM=="input", ATTRS{name}=="*GXTP7863*UNKNOWN*", ENV{LIBINPUT_IGNORE_DEVICE}="1"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload udev rules
+  ansible.builtin.command: udevadm control --reload-rules
+  changed_when: false
+
+- name: Trigger udev rules
+  ansible.builtin.command: udevadm trigger
+  changed_when: false
