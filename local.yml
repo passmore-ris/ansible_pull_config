@@ -29,6 +29,10 @@
     - name: Change repositories to Yandex mirrors
       ansible.builtin.include_tasks: tasks/repositories.yml
 
+        # Apply various miscellaneous bugfixes
+    - name: Apply bugfixes
+      ansible.builtin.include_tasks: tasks/bugfixes.yml
+
     # Install packages
     - name: Install packages
       ansible.builtin.include_tasks: tasks/packages.yml
@@ -72,7 +76,3 @@
     # Install and set up NetBird
     - name: Install and set up NetBird
       ansible.builtin.include_tasks: tasks/netbird.yml
-
-    # Apply various miscellaneous bugfixes
-    - name: Apply bugfixes
-      ansible.builtin.include_tasks: tasks/bugfixes.yml
