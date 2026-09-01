@@ -129,8 +129,8 @@
         "FilesToCollectSourceDirectory": "/home/$USER/veyon"
     },
     "LDAP": {
-        "BaseDN": "dc=ipa,dc=rischool,dc=ru",
-        "BindDN": "uid=veyon_svc,cn=users,cn=accounts,dc=ipa,dc=rischool,dc=ru",
+        "BaseDN": "dc=ipa,dc=rischool,dc=site",
+        "BindDN": "uid=veyon_svc,cn=users,cn=accounts,dc=ipa,dc=rischool,dc=site",
         "BindPassword": "bb93848d15b10dc816f8111238ef2e60d53fc94f0e4b58d44629acfde41ceab35720f77b12bbc5aa21b93fefb74f5868fcc4be08ea712cbc7674290a448927e7ebf6019797e7b0c38b7c7d8bbd7bde92b4a287b07a49812cbf83fde3e056c288e080803d4e0905dcb135307cd8277f3a70368aebc3abe29c4f4eee09d07ee743b55b323b7b1b44af54d1a8ee9556b501e5250963326a1cfdcecfb94e4ee9f9f80da1a248aefaaea496175379459eb1dc764179b4f18b47a9342a39234491b6c8d228f43942aba9eb834227de4226b0871903654265a3ad846354ae595e7edc8a7cbe57f6c379de18aa6837f48e36b85d218b51212e5645e0908474bb2eb09dfc59dfa90236ee2ed4774a358ccd073528348562c814e896ba881d168f998d9e730875fc62c053bae46c9b0790e86591b487325edd092dab1a9a5474dbf333334388127e38e15dc83e3db8fa67dd699dfc0f2772fe76bd79581b7469a7f21672f7291c4e3535e072b0859f8ff0d9b7f80a0733a9a85fd6362f0b92b371a29049eb35fda70a7123300afa8dc70c2e3be92e2c703cd05f3f3e4f221973b6b199a0d61328005c7fca7a3835ada347d7094d40b1590957fbc36297f283ebbcc6c494f124c07a8cece6047caa849c5e4c023da329b03316275e45ee512e02a8d621001d4c0ec55a521fe5c1cfaf631cc42589504bbbcc50e34fba20de06f7292edb4426",
         "ComputerGroupTree": "cn=hostgroups,cn=accounts",
         "ComputerGroupsFilter": "(objectClass=mepOriginEntry)",

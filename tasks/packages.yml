@@ -93,7 +93,9 @@
 
 - name: Install flatpaks for both pupil and staff workstations
   community.general.flatpak:
-    name: org.onlyoffice.desktopeditors
+    name:
+      - org.onlyoffice.desktopeditors
+      - md.obsidian.Obsidian
     remote: flathub
     state: present
     method: system
@@ -175,13 +177,13 @@
         update_cache: true
       when: ansible_os_family == 'Debian'
 
-    - name: Install flatpaks for staff workstations
-      community.general.flatpak:
-        name:
-          - md.obsidian.Obsidian
-        remote: flathub
-        state: present
-        method: system
+    # - name: Install flatpaks for staff workstations
+    #   community.general.flatpak:
+    #     name:
+    #       - 
+    #     remote: flathub
+    #     state: present
+    #     method: system
 
 #    - name: Install dnf-specific packages
 #      ansible.builtin.dnf:
