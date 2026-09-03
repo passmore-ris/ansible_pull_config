@@ -61,6 +61,7 @@
     owner: root
     group: root
     mode: '0640'
+    force: true
 
 - name: Import Veyon configuration
   ansible.builtin.command: sudo veyon-cli config import /etc/veyon_config.json
