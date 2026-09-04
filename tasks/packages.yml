@@ -113,6 +113,7 @@
           - blender
           - inkscape
           - geany
+          - geany-plugins
           - thonny # Workbench.py must be changed. See 'thonny.yml'
           - gimp
           - audacity
