@@ -8,7 +8,7 @@
   block:
     - name: Download Veyon .deb for Ubuntu
       ansible.builtin.get_url:
-        url: https://github.com/veyon/veyon/releases/download/v4.10.1/veyon_4.10.1.0-ubuntu.24.04_amd64.deb # Ubuntu 24.04
+        url: https://github.com/veyon/veyon/releases/download/v4.11.2/veyon_4.11.2.0-ubuntu.24.04_amd64.deb # Ubuntu 24.04
         dest: "{{ veyon_download_path }}"
         owner: root
         group: root
@@ -19,7 +19,7 @@
 
     - name: Download Veyon .deb for Debian 13
       ansible.builtin.get_url:
-        url: https://github.com/veyon/veyon/releases/download/v4.10.4/veyon_4.10.4.0-debian.13_amd64.deb
+        url: https://github.com/veyon/veyon/releases/download/v4.11.2/veyon_4.11.2.0-debian.13_amd64.deb
         dest: "{{ veyon_download_path }}"
         owner: root
         group: root
@@ -30,7 +30,7 @@
 
     - name: Download Veyon .rpm for Rocky/Alma/CentOS/RedHat 10
       ansible.builtin.get_url:
-        url: https://github.com/veyon/veyon/releases/download/v4.10.4/veyon-4.10.4.0-rhel.10.x86_64.rpm
+        url: https://github.com/veyon/veyon/releases/download/v4.11.2/veyon-4.11.2.0-rhel.10.x86_64.rpm
         dest: "{{ veyon_download_path }}"
         owner: root
         group: root
@@ -42,7 +42,6 @@
 - name: Install Veyon .deb package
   ansible.builtin.apt:
     deb: "{{ veyon_download_path }}"
-    state: absent
   when: ansible_os_family == 'Debian'
 
 # - name: Install Veyon Master
