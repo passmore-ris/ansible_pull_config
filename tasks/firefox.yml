@@ -7,6 +7,7 @@
         owner: root
         group: root
         mode: '0644'
+        force: true
   rescue:
     - name: Copy firefox policies to /usr/lib/firefox/distribution/policies.json
       ansible.builtin.copy:
@@ -15,3 +16,4 @@
         owner: root
         group: root
         mode: '0644'
+        force: true
