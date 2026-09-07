@@ -181,7 +181,6 @@
     # - name: Install flatpaks for staff workstations
     #   community.general.flatpak:
     #     name:
-    #       - 
     #     remote: flathub
     #     state: present
     #     method: system

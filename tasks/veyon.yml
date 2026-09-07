@@ -83,3 +83,12 @@
     owner: root
     group: '10002'
     mode: '0750'
+
+# Veyon only has experimental support for Wayland as of version 4.11, so forcing X11 ensures more stable functionality.
+
+- name: Disable Wayland on Debian devices
+  ansible.builtin.lineinfile:
+    path: /etc/gdm3/daemon.conf
+    regexp: '^#?WaylandEnable='
+    line: 'WaylandEnable=false'
+  when: ansible_facts['distribution'] == 'Debian'
