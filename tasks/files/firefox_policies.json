@@ -28,7 +28,7 @@
     "DisableSafeMode": true,
     "DisablePasswordReveal": true,
     "DisableSecurityBypass": {
-      "InvalidCertificate": true,
+      "InvalidCertificate": false,
       "SafeBrowsing": true
     },
     "DisplayBookmarksToolbar": "always",
@@ -59,7 +59,7 @@
       "Locked": true
     },
     "FirefoxSuggest": {
-      "WebSuggestions": true,
+      "WebSuggestions": false,
       "SponsoredSuggestions": false,
       "ImproveSuggest": false,
       "Locked": true
