@@ -126,27 +126,36 @@
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
           - code
           - tuxpaint
+          - podman
         update_cache: true
+
+- name: Install flatpaks for both pupil and staff workstations
+  community.general.flatpak:
+    name:
+      - org.virt_manager.virt-manager
+    remote: flathub
+    state: present
+    method: user
 
 # Special method for installing Turbowarp Desktop on Debian-based systems
 
-    - name: Check for Turbowarp installation file
-      ansible.builtin.stat:
-        path: /opt/turbowarp-desktop.deb
-      register: turbowarp_installer
+- name: Check for Turbowarp installation file
+  ansible.builtin.stat:
+    path: /opt/turbowarp-desktop.deb
+  register: turbowarp_installer
 
-    - name: Download Turbowarp Desktop installer
-      when: not turbowarp_installer.stat.exists
-      block:
-        - name: Download deb package for Turbowarp Desktop
-          ansible.builtin.get_url:
-            url: https://github.com/TurboWarp/desktop/releases/download/v1.16.0/TurboWarp-linux-amd64-1.16.0.deb
-            dest: /opt/turbowarp-desktop.deb
-            mode: '0644'
-        - name: Install Turbowarp Desktop
-          ansible.builtin.apt:
-            deb: /opt/turbowarp-desktop.deb
-            state: present
+- name: Download Turbowarp Desktop installer
+  when: not turbowarp_installer.stat.exists
+  block:
+    - name: Download deb package for Turbowarp Desktop
+      ansible.builtin.get_url:
+        url: https://github.com/TurboWarp/desktop/releases/download/v1.16.0/TurboWarp-linux-amd64-1.16.0.deb
+        dest: /opt/turbowarp-desktop.deb
+        mode: '0644'
+    - name: Install Turbowarp Desktop
+      ansible.builtin.apt:
+        deb: /opt/turbowarp-desktop.deb
+        state: present
 
 ###########################################
 # Install packages for staff workstations #
