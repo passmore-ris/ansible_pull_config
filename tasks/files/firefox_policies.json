@@ -81,6 +81,9 @@
       "Default": true,
       "Locked": true
     },
+    "SearchEngines": {
+      "Default": "DuckDuckGo"
+    },
     "StartDownloadsInTempDirectory": true,
     "UserMessaging": {
       "ExtensionRecommendations": false,
