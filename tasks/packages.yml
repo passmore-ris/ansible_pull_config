@@ -126,7 +126,6 @@
           - libreoffice-l10n-ru # Russian language pack for LibreOffice
           - code
           - tuxpaint
-          - podman
         update_cache: true
 
 - name: Install flatpaks for both pupil and staff workstations
@@ -134,7 +133,7 @@
     name:
       - org.virt_manager.virt-manager
     remote: flathub
-    state: present
+    state: absent
     method: user
 
 # Special method for installing Turbowarp Desktop on Debian-based systems
@@ -156,6 +155,14 @@
       ansible.builtin.apt:
         deb: /opt/turbowarp-desktop.deb
         state: present
+
+# Remove packages
+- name: Remove packages from pupil workstations
+  ansible.builtin.apt:
+    name:
+      - podman
+    state: absent
+
 
 ###########################################
 # Install packages for staff workstations #
