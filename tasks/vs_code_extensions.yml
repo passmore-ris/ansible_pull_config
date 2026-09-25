@@ -1,0 +1,13 @@
+- name: Install VS Code extensions
+  ansible.builtin.command:
+    argv:
+      - code
+      - --install-extension
+      - "{{ item }}"
+  loop:
+    - george-alisson.html-preview-vscode
+    - ms-python.python
+    - mechatroner.rainbow-csv
+  register: vscode_extension_result
+  changed_when: >
+    'successfully installed' in vscode_extension_result.stdout

@@ -46,6 +46,10 @@
       ansible.builtin.include_tasks: tasks/thonny.yml # Thonny needs to be...edited a little bit. Removes the flag.
       when: ansible_local.workstation.role.name | default('pupil') == 'pupil' # Only relevant for pupil workstations.
 
+    - name: Install VS Code extensions
+      ansible.builtin.include_tasks: tasks/vs_code_etxensions.yml
+      when: ansible_local.workstation.role.name | default('pupil') == 'pupil' # Only relevant for pupil workstations.
+
     - name: Add wallpapers & icons
       ansible.builtin.include_tasks: tasks/wallpapers.yml
 
