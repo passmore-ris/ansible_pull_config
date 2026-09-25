@@ -47,7 +47,7 @@
       when: ansible_local.workstation.role.name | default('pupil') == 'pupil' # Only relevant for pupil workstations.
 
     - name: Install VS Code extensions
-      ansible.builtin.include_tasks: tasks/vs_code_etxensions.yml
+      ansible.builtin.include_tasks: tasks/vs_code_extensions.yml
       when: ansible_local.workstation.role.name | default('pupil') == 'pupil' # Only relevant for pupil workstations.
 
     - name: Add wallpapers & icons
