@@ -1,3 +1,4 @@
+# At the moment, this playbook causes errors.
 - name: Install VS Code extensions
   ansible.builtin.command:
     argv:
