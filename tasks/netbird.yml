@@ -27,7 +27,7 @@
   when: ansible_local.workstation.role.name | default('pupil') == 'pupil'
 
 - name: Spin NetBird up for staff workstations
-  ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_staff }} --profile 'Russian International School'"
+  ansible.builtin.command: netbird up --management-url "{{ netbird_management_url }}" --setup-key "{{ netbird_setup_key_staff }}"
   when: ansible_local.workstation.role.name | default('pupil') == 'staff'
 
 # - name: Create system-wide extension directory for AppIndicator
